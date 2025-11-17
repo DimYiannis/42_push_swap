@@ -16,12 +16,19 @@
 void deletion(struct node **stack)
 {
   struct node *tmp;
+  struct node *tranverse;
   tmp = *stack;
+  tranverse = (*stack)->next;
 
   if (stack==NULL || *stack == NULL)
     return;
+  while (tranverse->next != *stack)
+    tranverse = tranverse->next;
+  tranverse->next = (*stack)->next;
   (*stack) = (*stack)->next;
+  (*stack)->prev = tranverse;
   free(tmp);
+
 }
 
 void insert(struct node **stack, struct node newnode)
