@@ -17,9 +17,9 @@ void deletion(struct node **stack)
 {
   struct node *tmp;
   struct node *tranverse;
+  
   tmp = *stack;
   tranverse = (*stack)->next;
-
   if (stack==NULL || *stack == NULL)
     return;
   while (tranverse->next != *stack)
@@ -28,10 +28,15 @@ void deletion(struct node **stack)
   (*stack) = (*stack)->next;
   (*stack)->prev = tranverse;
   free(tmp);
-
 }
 
-void insert(struct node **stack, struct node newnode)
+void insert(struct node **stack, struct node *newnode)
 {
-  
+
+  if (*stack == NULL)
+    *stack = newnode;
+  newnode->next = *stack;
+  newnode->prev = (*stack)->prev;
+  (*stack)->prev = newnode;
+  *stack = newnode;
 }
