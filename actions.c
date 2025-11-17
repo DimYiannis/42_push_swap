@@ -40,3 +40,20 @@ void insert(struct node **stack, struct node *newnode)
   (*stack)->prev = newnode;
   *stack = newnode;
 }
+
+void swap_first_sec(struct node **stack)
+{
+  struct node *tmp;
+    
+ if (stack && *stack && (*stack)->next)
+ {
+  
+   tmp = *stack;
+   (*stack)->next->data = (*stack)->data;
+ }
+}
+
+void swap_firsts(struct node **stack_a, struct node **stack_b)
+{
+
+}
