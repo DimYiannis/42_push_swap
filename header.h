@@ -6,7 +6,7 @@
 /*   By: ydimitra <ydimitra@student.42.f>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 16:16:02 by ydimitra          #+#    #+#             */
-/*   Updated: 2025/11/16 19:21:29 by ydimitra         ###   ########.fr       */
+/*   Updated: 2025/11/18 15:42:30 by ydimitra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@ typedef struct node
   struct node *prev;
 } *stack_a, *stack_b;
 
-
-
+void push_swap(struct node **stack_a, struct node **stack_b);
+void createlist(int n,char *arr[], struct node **stack);
+void displaystack(struct node **stack);
+void deletion(struct node **stack);
+void insert(struct node **stack, struct node *newnode);
+void swap_first_sec(struct node **stack);
+void swap_firsts(struct node **stack_a, struct node **stack_b);
+void shift_up(struct node **stack);
+void shift_down(struct node **stack);
 #endif
