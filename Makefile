@@ -13,7 +13,7 @@ OBJ = $(SRC:.c=.o)
 
 $(NAME): $(OBJ)
 	make -C $(PRINTF_DIR)
-	cp $(PRINTF) $(NAME)
+	cp -u $(PRINTF) $(NAME)
 	ar rcs $(NAME) $(OBJ)
 
 all: $(NAME)
