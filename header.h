@@ -23,11 +23,11 @@ typedef struct s_node
   struct node *prev;
 } t_node;
 
-typede t_node *t_stack;
+typedef t_node *t_stack;
 
 void push_swap(struct node **stack_a, struct node **stack_b);
-void createlist(int n,char *arr[], struct node **stack);
-void displaystack(struct node **stack);
+void createlist(int n, char *arr[], t_stack *stack);
+void displaystack(t_stack stack);
 void deletion(struct node **stack);
 void insert(struct node **stack, struct node *newnode);
 void swap_first_sec(struct node **stack);
