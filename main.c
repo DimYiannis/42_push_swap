@@ -15,12 +15,17 @@
 
 int main(int argc, char *argv[])
 {
-  createlist(argc, argv, stack_a);
+  t_stack stack_a;
+  t_stack stack_b;
+
+  stack_a = NULL;
+  stack_b = NULL;
+  createlist(argc, argv, &stack_a);
   //implement logic
-  push_swap(stack_a, stack_b);
+  //push_swap(stack_a, stack_b);
 
   //display actions
 
   //display stacks
-  
+  displaystack(stack_a); 
 }
