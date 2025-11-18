@@ -16,12 +16,14 @@
 # include "printf/libft/libft.h"
 # include "printf/ft_printf_bonus.h"
 
-typedef struct node
+typedef struct s_node
 {
   int data;
   struct node *next;
   struct node *prev;
-} *stack_a, *stack_b;
+} t_node;
+
+typede t_node *t_stack;
 
 void push_swap(struct node **stack_a, struct node **stack_b);
 void createlist(int n,char *arr[], struct node **stack);
@@ -32,4 +34,5 @@ void swap_first_sec(struct node **stack);
 void swap_firsts(struct node **stack_a, struct node **stack_b);
 void shift_up(struct node **stack);
 void shift_down(struct node **stack);
+
 #endif
