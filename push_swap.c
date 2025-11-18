@@ -14,7 +14,7 @@
 #include "header.h"
 
 
-void createlist(int n,char *arr[], struct node **stack_a)
+void createlist(int n, char *arr[], struct node **stack_a)
 {
   struct node *tmp;
   struct node *newnode;
@@ -22,18 +22,18 @@ void createlist(int n,char *arr[], struct node **stack_a)
   
   i = 2;
   *stack_a = (struct node *)malloc(sizeof(struct node));
-  if (!stack_a)
+  if (!(*stack_a))
     ft_printf("Error\n");
-  (*stack_a)->data = ft_atoi(argv[1]);
+  (*stack_a)->data = ft_atoi(arr[1]);
   (*stack_a)->next = *stack_a;
   (*stack_a)->prev = *stack_a;
   tmp = *stack_a;
-  while (i < argc)
+  while (i < n)
   {
     newnode = (struct node *)malloc(sizeof(struct node));
     if (!newnode)
        ft_printf("Error\n");
-    newnode->data = ft_atoi(argv[i]);
+    newnode->data = ft_atoi(arr[i]);
     newnode->next = *stack_a;
     newnode->prev = tmp;
     tmp->next = newnode;
@@ -43,12 +43,16 @@ void createlist(int n,char *arr[], struct node **stack_a)
   }
  }
 
-void displaystack(struct node **stack)
+void displaystack(struct node *stack)
 {
     struct node *tmp;
-    tmp = *stack;
-
-    while (tmp != NULL)
+    
+  if (!stack)
+    return;
+  tmp = *stack;
+    ft_printf("\n%d", tmp->data);
+    tmp = tmp->next;
+    while (tmp != *stack)
     {
         ft_printf("\n%d", tmp->data);
         tmp = tmp->next;
@@ -56,8 +60,8 @@ void displaystack(struct node **stack)
 
 }
 
-void push_swap(struct node **stack_a, struct node **stack_b)
-{
-   
-  
-}
+// void push_swap(struct node **stack_a, struct node **stack_b)
+// {
+//
+//
+// }
