@@ -33,7 +33,7 @@ void deletion(struct node **stack)
 void insert(struct node **stack, struct node *newnode)
 {
 
-  if (*stack == NULL)
+  if (*stack == NULL || stack == NULL)
     *stack = newnode;
   newnode->next = *stack;
   newnode->prev = (*stack)->prev;
@@ -45,15 +45,29 @@ void swap_first_sec(struct node **stack)
 {
   struct node *tmp;
     
- if (stack && *stack && (*stack)->next)
- {
+  if (stack && *stack && (*stack)->next)
+  {
   
-   tmp = *stack;
-   (*stack)->next->data = (*stack)->data;
- }
+     tmp = *stack;
+    (*stack)->next->data = (*stack)->data;
+  }
 }
 
 void swap_firsts(struct node **stack_a, struct node **stack_b)
 {
+  int tmp_val;
 
+  tmp_val = (*stack_a)->data;
+  (*stack_a)->data = (*stack_b)->data;
+  (*stack_b)->data = tmp_val;
+}
+
+void shift_up(struct node **stack)
+{
+  *stack = (*stack)->next;
+}
+
+void shift_down(struct node **stack)
+{
+  *stack = (*stack)->prev;
 }
