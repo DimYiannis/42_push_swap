@@ -6,7 +6,7 @@
 /*   By: ydimitra <ydimitra@student.42.f>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 16:20:40 by ydimitra          #+#    #+#             */
-/*   Updated: 2025/11/16 19:20:38 by ydimitra         ###   ########.fr       */
+/*   Updated: 2025/11/18 15:08:34 by ydimitra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "header.h"
 
 
-void createlist(int argc,char *argv[], struct node **stack_a)
+void createlist(int n,char *arr[], struct node **stack)
 {
   struct node *tmp;
   struct node *newnode;
@@ -42,3 +42,8 @@ void createlist(int argc,char *argv[], struct node **stack_a)
     i++;
   }
  }
+
+void push_swap(int num, char **arr)
+{
+  createlist(num, arr, stack_a);
+}

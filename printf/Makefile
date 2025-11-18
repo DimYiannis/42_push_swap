@@ -13,20 +13,15 @@ print_pointer_bonus.c print_string_bonus.c print_uint_bonus.c int_helpers_bonus.
 uint_combinations_bonus.c eval_format_bonus.c hex_helpers_bonus.c
 BONUS_OBJ = $(BONUS_SRC:.c=.o)	
 
-%.o: %.c ft_printf.h
+%.o: %.c ft_printf_bonus.h
 	$(CC) $(CFLAGS) -c $< -o $@ 
 
-$(NAME): $(OBJ)
-	make -C $(LIBFT_DIR)
-	cp $(LIBFT) $(NAME)
-	ar rcs $(NAME) $(OBJ)
-
-all: $(NAME)
-
-bonus: $(BONUS_OBJ)
+$(NAME):$(BONUS_OBJ)
 	make -C $(LIBFT_DIR)
 	cp $(LIBFT) $(NAME)
 	ar rcs $(NAME) $(BONUS_OBJ)
+
+all: $(NAME)
 
 clean:
 	make -C $(LIBFT_DIR) clean
