@@ -6,7 +6,7 @@
 /*   By: ydimitra <ydimitra@student.42.f>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 16:20:40 by ydimitra          #+#    #+#             */
-/*   Updated: 2025/11/18 15:44:27 by ydimitra         ###   ########.fr       */
+/*   Updated: 2025/11/18 15:48:41 by ydimitra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,15 @@ void createlist(int n,char *arr[], struct node **stack_a)
 
 void displaystack(struct node **stack)
 {
-  
+    struct node *tmp;
+    tmp = *stack;
+
+    while (tmp != NULL)
+    {
+        ft_printf("\n%d", tmp->data);
+        tmp = tmp->next;
+    }
+
 }
 
 void push_swap(struct node **stack_a, struct node **stack_b)
