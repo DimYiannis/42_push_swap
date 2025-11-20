@@ -21,7 +21,7 @@ void createlist(int n, char *arr[], t_stack *stack)
   int i;
   
   i = 2;
-  *stack = malloc(sizeof(t_stack));
+  *stack = malloc(sizeof(t_node));
   if (!(*stack))
     ft_printf("Error\n");
   (*stack)->data = ft_atoi(arr[1]);
@@ -60,8 +60,8 @@ void displaystack(t_stack stack)
 
 }
 
-void push_swap(struct node **stack_a, struct node **stack_b)
-{
-
-
-}
+// void push_swap(t_stack **stack_a, t_stack **stack_b)
+// {
+//
+//
+// }

@@ -19,20 +19,20 @@
 typedef struct s_node
 {
   int data;
-  struct node *next;
-  struct node *prev;
+  struct s_node *next;
+  struct s_node *prev;
 } t_node;
 
 typedef t_node *t_stack;
 
-void push_swap(struct node **stack_a, struct node **stack_b);
+//void push_swap(struct node **stack_a, struct node **stack_b);
 void createlist(int n, char *arr[], t_stack *stack);
 void displaystack(t_stack stack);
-void deletion(struct node **stack);
-void insert(struct node **stack, struct node *newnode);
-void swap_first_sec(struct node **stack);
-void swap_firsts(struct node **stack_a, struct node **stack_b);
-void shift_up(struct node **stack);
-void shift_down(struct node **stack);
+void deletion(t_stack *stack);
+void insert(t_stack stack, t_stack *newnode);
+void swap_first_sec(t_stack *stack);
+void swap_firsts(t_stack *stack_a, t_stack *stack_b);
+void shift_up(t_stack *stack);
+void shift_down(t_stack *stack);
 
 #endif
