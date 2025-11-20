@@ -29,7 +29,7 @@ typedef t_node *t_stack;
 void createlist(int n, char *arr[], t_stack *stack);
 void displaystack(t_stack stack);
 void deletion(t_stack *stack);
-void insert(t_stack stack, t_stack *newnode);
+void insert(t_stack *stack, t_stack newnode);
 void swap_first_sec(t_stack *stack);
 void swap_firsts(t_stack *stack_a, t_stack *stack_b);
 void shift_up(t_stack *stack);

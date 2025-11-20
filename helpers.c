@@ -21,7 +21,7 @@ void deletion(t_stack *stack)
   if (!stack || !*stack)
     return;
   tmp = *stack;
-  if (tmp = tmp->next);
+  if (tmp == tmp->next)
   {
     free(tmp);
     *stack = NULL;
@@ -34,13 +34,23 @@ void deletion(t_stack *stack)
   free(tmp);
 }
 
-void insert(t_stack stack, t_stack *newnode)
+void insert(t_stack *stack, t_stack newnode)
 {
+  t_node *last;
 
-  if (*stack == NULL || stack == NULL)
+  if (!stack || !newnode)
+    return;
+  if (!*stack)
+  {
+    newnode->next = newnode;
+    newnode->prev = newnode;
     *stack = newnode;
+    return;
+  }
+  last = (*stack)->prev;
   newnode->next = *stack;
-  newnode->prev = (*stack)->prev;
+  newnode->prev = last;
+  last->next = newnode;
   (*stack)->prev = newnode;
   *stack = newnode;
 }
