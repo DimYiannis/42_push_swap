@@ -68,7 +68,7 @@ void createlist(int n, char *arr[], t_stack *stack)
     if (!newnode)
     {
       ft_printf("Error\n");
-      free_up(newnode);
+      free_up(*stack);
       *stack = NULL;
       return;
     }
