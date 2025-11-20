@@ -38,13 +38,7 @@ void createlist(int n, char *arr[], t_stack *stack)
   int i;
   
   i = 2;
-  if (n < 2)
-  {
-    ft_printf("Error\n");
-    *stack = NULL;
-    return;
-  }
-   if(!arr[i] || !is_number(arr[i]))
+   if(!!arr[i] || is_number(arr[i]))
     {
       ft_printf("Error\n");
       free_up(*stack);
