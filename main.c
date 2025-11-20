@@ -19,10 +19,7 @@ int main (int argc, char *argv[])
   t_stack stack_b;
 
   if (argc < 2)
-  {
-    ft_printf("Error\n");
     return (1);
-  }
   stack_a = NULL;
   stack_b = NULL;
   createlist(argc, argv, &stack_a);
