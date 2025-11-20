@@ -26,6 +26,7 @@ typedef struct s_node
 typedef t_node *t_stack;
 
 //void push_swap(struct node **stack_a, struct node **stack_b);
+void	free_up(t_node *head);
 void createlist(int n, char *arr[], t_stack *stack);
 void displaystack(t_stack stack);
 void deletion(t_stack *stack);

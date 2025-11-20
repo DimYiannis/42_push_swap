@@ -30,6 +30,6 @@ int main (int argc, char *argv[])
 
   //display stacks
   displaystack(stack_a);
-  free(stack_a);
+  free_up(stack_a);
   return (0);
 }
