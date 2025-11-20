@@ -13,24 +13,28 @@
 #include "header.h"
 
 
-void deletion(struct node **stack)
+void deletion(t_stack *stack)
 {
-  struct node *tmp;
-  struct node *tranverse;
-  
-  tmp = *stack;
-  tranverse = (*stack)->next;
-  if (stack==NULL || *stack == NULL)
+  t_node *tmp;
+  t_node *last;
+ 
+  if (!stack || !*stack)
     return;
-  while (tranverse->next != *stack)
-    tranverse = tranverse->next;
-  tranverse->next = (*stack)->next;
+  tmp = *stack;
+  if (tmp = tmp->next);
+  {
+    free(tmp);
+    *stack = NULL;
+    return;
+  }
+  last = tmp->prev; 
+  last->next = tmp->next;
   (*stack) = (*stack)->next;
-  (*stack)->prev = tranverse;
+  (*stack)->prev = last;
   free(tmp);
 }
 
-void insert(struct node **stack, struct node *newnode)
+void insert(t_stack stack, t_stack *newnode)
 {
 
   if (*stack == NULL || stack == NULL)
@@ -41,9 +45,9 @@ void insert(struct node **stack, struct node *newnode)
   *stack = newnode;
 }
 
-void swap_first_sec(struct node **stack)
+void swap_first_sec(t_stack *stack)
 {
-  struct node *tmp;
+  t_node *tmp;
     
   if (stack && *stack && (*stack)->next)
   {
@@ -53,7 +57,7 @@ void swap_first_sec(struct node **stack)
   }
 }
 
-void swap_firsts(struct node **stack_a, struct node **stack_b)
+void swap_firsts(t_stack *stack_a, t_stack *stack_b)
 {
   int tmp_val;
 
@@ -62,12 +66,12 @@ void swap_firsts(struct node **stack_a, struct node **stack_b)
   (*stack_b)->data = tmp_val;
 }
 
-void shift_up(struct node **stack)
+void shift_up(t_stack *stack)
 {
   *stack = (*stack)->next;
 }
 
-void shift_down(struct node **stack)
+void shift_down(t_stack *stack)
 {
   *stack = (*stack)->prev;
 }
