@@ -18,8 +18,11 @@ int main (int argc, char *argv[])
   t_stack stack_a;
   t_stack stack_b;
 
-  if (!argv)
-    return ft_printf("Error\n");
+  if (argc < 2)
+  {
+    ft_printf("Error\n");
+    return (1);
+  }
   stack_a = NULL;
   stack_b = NULL;
   createlist(argc, argv, &stack_a);
@@ -30,6 +33,7 @@ int main (int argc, char *argv[])
 
   //display stacks
   displaystack(stack_a);
-  free_up(stack_a);
+  if (stack_a != NULL)
+    free_up(stack_a);
   return (0);
 }

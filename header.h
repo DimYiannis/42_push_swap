@@ -35,5 +35,6 @@ void swap_first_sec(t_stack *stack);
 void swap_firsts(t_stack *stack_a, t_stack *stack_b);
 void shift_up(t_stack *stack);
 void shift_down(t_stack *stack);
+int is_number(char *str);
 
 #endif
