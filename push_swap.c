@@ -37,14 +37,14 @@ void createlist(int n, char *arr[], t_stack *stack)
   t_node *newnode;
   int i;
   
-  i = 2;
-   if(!!arr[i] || is_number(arr[i]))
-    {
+  i = 1;
+  if(!arr[i] || !is_number(arr[i]))
+  {
       ft_printf("Error\n");
       free_up(*stack);
       *stack = NULL;
       return;
-    }
+  }
   *stack = malloc(sizeof(t_node));
   if (!(*stack))
   {
@@ -56,6 +56,7 @@ void createlist(int n, char *arr[], t_stack *stack)
   (*stack)->next = *stack;
   (*stack)->prev = *stack;
   tmp = *stack;
+  i = 2;
   while (i < n)
   {
     if(!arr[i] || !is_number(arr[i]))
@@ -86,18 +87,19 @@ void createlist(int n, char *arr[], t_stack *stack)
 void displaystack(t_stack stack)
 {
     t_node *tmp;
-    
-  if (!stack)
-    return;
-  tmp = stack;
-    ft_printf("%d\n", tmp->data);
-    tmp = tmp->next;
-    while (tmp != stack)
+
+    if (!stack)
+        return;
+    tmp = stack;
+    while (1)
     {
-        ft_printf("\n%d", tmp->data);
+        ft_printf("%d\n", tmp->data);
         tmp = tmp->next;
+        if (tmp == stack)
+            break;
     }
 }
+
 
 // void push_swap(t_stack **stack_a, t_stack **stack_b)
 // {
