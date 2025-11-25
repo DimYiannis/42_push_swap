@@ -37,3 +37,45 @@ void push_back_to_a(t_stack *stack_a, t_stack *stack_b)
   }
 }
 
+void sort_three(t_stack *stack_a)
+{
+    int first, second, third;
+
+    if (!*a || (*a)->next == *a || (*a)->next->next == *a)
+        return; // 0 or 1 element, already sorted
+
+    first = (*a)->data;
+    second = (*a)->next->data;
+    third = (*a)->next->next->data;
+
+    // There are only 5 possible unsorted cases for 3 elements
+    if (first > second && second < third && first < third)
+    {
+        swap_first_sec(a);
+        ft_printf("sa\n");
+    }
+    else if (first > second && second > third)
+    {
+        swap_first_sec(a);
+        ft_printf("sa\n");
+        shift_down(a);
+        ft_printf("rra\n");
+    }
+    else if (first > second && second < third && first > third)
+    {
+        shift_up(a);
+        ft_printf("ra\n");
+    }
+    else if (first < second && second > third && first < third)
+    {
+        swap_first_sec(a);
+        ft_printf("sa\n");
+        shift_up(a);
+        ft_printf("ra\n");
+    }
+    else if (first < second && second > third && first > third)
+    {
+        shift_down(a);
+        ft_printf("rra\n");
+    }
+}
