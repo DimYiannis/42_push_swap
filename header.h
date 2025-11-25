@@ -29,7 +29,7 @@ void push_swap(t_stack *stack_a, t_stack *stack_b);
 void free_up(t_node *head);
 void createlist(int n, char *arr[], t_stack *stack);
 void displaystack(t_stack stack);
-void deletion(t_stack *stack);
+t_node *deletion(t_stack *stack);
 void insert(t_stack *stack, t_stack newnode);
 void swap_first_sec(t_stack *stack);
 void swap_firsts(t_stack *stack_a, t_stack *stack_b);
