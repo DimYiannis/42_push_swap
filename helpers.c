@@ -24,6 +24,7 @@ t_node *deletion(t_stack *stack)
   if (tmp->next == tmp)
   {
     *stack = NULL;
+    tmp->next = tmp->prev = tmp;
     return tmp;
   }
   last = tmp->prev;
@@ -32,19 +33,21 @@ t_node *deletion(t_stack *stack)
   tmp->next->prev = last;
 
   *stack = tmp->next;
+
+  tmp->next = tmp->prev = tmp;
   return (tmp);
 }
 
-void insert(t_stack *stack, t_stack newnode)
+void insert(t_stack *stack, t_node *newnode)
 {
   t_node *last;
 
   if (!stack || !newnode)
     return;
-  newnode->next = newnode;
-  newnode->prev = newnode;
-  if (!*stack)
+   if (!*stack)
   {
+    newnode->next = newnode;
+    newnode->prev = newnode;
     *stack = newnode;
     return;
   }
