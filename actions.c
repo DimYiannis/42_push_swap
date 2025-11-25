@@ -13,17 +13,27 @@
 #include "header.h"
 
 
-void push_to_b(t_stack *a, t_stack *b)
+void push_to_b(t_stack *stack_a, t_stack *stack_b)
 {
-  while (*a && (*a), t_stack *b)
+  while (*stack_a && (*stack_a)->next != *stack_a)
   {
-    t_node *tmp = *a;
+    t_node *tmp = *stack_a;
 
-    deletion(a);
-    insert(b, tmp);
+    deletion(stack_a);
+    insert(stack_b, tmp);
 
     ft_printf("pb\n");
   }
 }
 
+void push_back_to_a(t_stack *stack_a, t_stack *stack_b)
+{
+  while (*stack_b)
+  {
+    t_node *tmp = *b;
+    deletion(b);
+    insert(a, tmp);
+    ft_printf("pa\n");
+  }
+}
 
