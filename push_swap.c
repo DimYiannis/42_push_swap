@@ -103,8 +103,9 @@ void displaystack(t_stack stack)
 void push_swap(t_stack *stack_a, t_stack *stack_b)
 {
   int size = 0;
-  t_node *tmp = *stack_a;
+  t_node *tmp;
 
+  tmp = *stack_a;
   if (!tmp)
       return;
   size++;

@@ -39,7 +39,9 @@ void push_back_to_a(t_stack *stack_a, t_stack *stack_b)
 
 void sort_three(t_stack *stack_a)
 {
-    int first, second, third;
+  int first; 
+  int second; 
+  int third;
 
     if (!*stack_a || (*stack_a)->next == *stack_a || (*stack_a)->next->next == *stack_a)
         return;
