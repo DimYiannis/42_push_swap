@@ -61,9 +61,9 @@ void swap_first_sec(t_stack *stack)
     
   if (stack && *stack && (*stack)->next)
   {
-  
-     tmp = *stack;
-    (*stack)->next->data = (*stack)->data;
+    int tmp_val = (*stack)->data;
+    (*stack)->data = (*stack)->next->data;
+    (*stack)->next->data = tmp_val;
   }
 }
 
