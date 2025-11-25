@@ -11,3 +11,19 @@
 /* ************************************************************************** */
 
 #include "header.h"
+
+
+void push_to_b(t_stack *a, t_stack *b)
+{
+  while (*a && (*a), t_stack *b)
+  {
+    t_node *tmp = *a;
+
+    deletion(a);
+    insert(b, tmp);
+
+    ft_printf("pb\n");
+  }
+}
+
+
