@@ -42,13 +42,12 @@ void sort_three(t_stack *stack_a)
     int first, second, third;
 
     if (!*a || (*a)->next == *a || (*a)->next->next == *a)
-        return; // 0 or 1 element, already sorted
+        return;
 
     first = (*a)->data;
     second = (*a)->next->data;
     third = (*a)->next->next->data;
 
-    // There are only 5 possible unsorted cases for 3 elements
     if (first > second && second < third && first < third)
     {
         swap_first_sec(a);
