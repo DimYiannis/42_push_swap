@@ -23,12 +23,10 @@ int main (int argc, char *argv[])
   stack_a = NULL;
   stack_b = NULL;
   createlist(argc, argv, &stack_a);
-  //implement logic
-  //push_swap(stack_a, stack_b);
-
-  //display actions
-
-  //display stacks
+  if (!stack_a)
+    return (1);
+  push_swap(&stack_a, &stack_b);
+  ft_printf("result: \n");
   displaystack(stack_a);
   if (stack_a != NULL)
     free_up(stack_a);

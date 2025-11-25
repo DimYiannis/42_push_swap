@@ -57,11 +57,11 @@ void insert(t_stack *stack, t_stack newnode)
 
 void swap_first_sec(t_stack *stack)
 {
-  t_node *tmp;
+  int tmp_val;
     
   if (stack && *stack && (*stack)->next)
   {
-    int tmp_val = (*stack)->data;
+    tmp_val = (*stack)->data;
     (*stack)->data = (*stack)->next->data;
     (*stack)->next->data = tmp_val;
   }

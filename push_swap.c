@@ -123,6 +123,6 @@ void push_swap(t_stack *stack_a, t_stack *stack_b)
 
   push_to_b(stack_a, stack_b);
   sort_three(stack_a);
-  push_back_to_a(stack_a, stack_b)
+  push_back_to_a(stack_a, stack_b);
 }
 
