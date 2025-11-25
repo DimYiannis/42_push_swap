@@ -13,25 +13,26 @@
 #include "header.h"
 
 
-void deletion(t_stack *stack)
+t_node *deletion(t_stack *stack)
 {
   t_node *tmp;
   t_node *last;
  
   if (!stack || !*stack)
-    return;
+    return (NULL);
   tmp = *stack;
-  if (tmp == tmp->next)
+  if (tmp->next == tmp)
   {
-    free(tmp);
     *stack = NULL;
-    return;
+    return tmp;
   }
-  last = tmp->prev; 
+  last = tmp->prev;
+
   last->next = tmp->next;
-  (*stack) = (*stack)->next;
-  (*stack)->prev = last;
-  free(tmp);
+  tmp->next->prev = last;
+
+  *stack = tmp->next;
+  return (tmp);
 }
 
 void insert(t_stack *stack, t_stack newnode)
@@ -40,10 +41,10 @@ void insert(t_stack *stack, t_stack newnode)
 
   if (!stack || !newnode)
     return;
+  newnode->next = newnode;
+  newnode->prev = newnode;
   if (!*stack)
   {
-    newnode->next = newnode;
-    newnode->prev = newnode;
     *stack = newnode;
     return;
   }
@@ -59,12 +60,11 @@ void swap_first_sec(t_stack *stack)
 {
   int tmp_val;
     
-  if (stack && *stack && (*stack)->next)
-  {
-    tmp_val = (*stack)->data;
-    (*stack)->data = (*stack)->next->data;
-    (*stack)->next->data = tmp_val;
-  }
+  if (!stack || !*stack || (*stack)->next == *stack)
+    return;
+  tmp_val = (*stack)->data;
+  (*stack)->data = (*stack)->next->data;
+  (*stack)->next->data = tmp_val;
 }
 
 void swap_firsts(t_stack *stack_a, t_stack *stack_b)

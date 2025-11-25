@@ -29,7 +29,7 @@ void push_to_b(t_stack *stack_a, t_stack *stack_b)
 void push_back_to_a(t_stack *stack_a, t_stack *stack_b)
 {
     t_node *tmp; 
-  if (!stack_b || !*stack_b);
+  if (!stack_b || !*stack_b)
     return;
   tmp = *stack_b;  
   deletion(stack_b);
