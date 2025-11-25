@@ -30,7 +30,7 @@ void free_up(t_node *head);
 void createlist(int n, char *arr[], t_stack *stack);
 void displaystack(t_stack stack);
 t_node *deletion(t_stack *stack);
-void insert(t_stack *stack, t_stack newnode);
+void insert(t_stack *stack, t_node *newnode);
 void swap_first_sec(t_stack *stack);
 void swap_firsts(t_stack *stack_a, t_stack *stack_b);
 void shift_up(t_stack *stack);
@@ -39,5 +39,6 @@ int is_number(char *str);
 void sort_three(t_stack *stack_a);
 void push_back_to_a(t_stack *stack_a, t_stack *stack_b);
 void push_to_b(t_stack *stack_a, t_stack *stack_b);
+int stack_size(t_stack stack);
 
 #endif
