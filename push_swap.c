@@ -100,9 +100,28 @@ void displaystack(t_stack stack)
     }
 }
 
+void push_swap(t_stack *stack_a, t_stack *stack_b)
+{
+  int size = 0;
+  t_node *tmp = *stack_a;
 
-// void push_swap(t_stack **stack_a, t_stack **stack_b)
-// {
-//
-//
-// }
+  if (!tmp)
+      return;
+  size++;
+  tmp = tmp->next;
+  while (tmp != *stack_a)
+  {
+    size++;
+    tmp = tmp->next;
+  }
+  if (size <=3)
+  {
+    sort_three(stack_a);
+    return;
+  }
+
+  push_to_b(stack_a, stack_b);
+  sort_three(stack_a);
+  push_back_to_a(stack_a, stack_b)
+}
+
