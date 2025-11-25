@@ -15,26 +15,26 @@
 
 void push_to_b(t_stack *stack_a, t_stack *stack_b)
 {
-  while (*stack_a && (*stack_a)->next != *stack_a)
-  {
-    t_node *tmp = *stack_a;
+    t_node *tmp; 
 
-    deletion(stack_a);
-    insert(stack_b, tmp);
+  if (!stack_a || !*stack_a)
+    return;
+  tmp = *stack_a;
+  deletion(stack_a);
+  insert(stack_b, tmp);
 
-    ft_printf("pb\n");
-  }
+  ft_printf("pb\n");
 }
 
 void push_back_to_a(t_stack *stack_a, t_stack *stack_b)
 {
-  while (*stack_b)
-  {
-    t_node *tmp = *stack_b;
-    deletion(stack_b);
-    insert(stack_a, tmp);
-    ft_printf("pa\n");
-  }
+    t_node *tmp; 
+  if (!stack_b || !*stack_b);
+    return;
+  tmp = *stack_b;  
+  deletion(stack_b);
+  insert(stack_a, tmp);
+  ft_printf("pa\n");
 }
 
 void sort_three(t_stack *stack_a)
