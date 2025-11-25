@@ -30,9 +30,9 @@ void push_back_to_a(t_stack *stack_a, t_stack *stack_b)
 {
   while (*stack_b)
   {
-    t_node *tmp = *b;
-    deletion(b);
-    insert(a, tmp);
+    t_node *tmp = *stack_b;
+    deletion(stack_b);
+    insert(stack_a, tmp);
     ft_printf("pa\n");
   }
 }
@@ -41,40 +41,40 @@ void sort_three(t_stack *stack_a)
 {
     int first, second, third;
 
-    if (!*a || (*a)->next == *a || (*a)->next->next == *a)
+    if (!*stack_a || (*stack_a)->next == *stack_a || (*stack_a)->next->next == *stack_a)
         return;
 
-    first = (*a)->data;
-    second = (*a)->next->data;
-    third = (*a)->next->next->data;
+    first = (*stack_a)->data;
+    second = (*stack_a)->next->data;
+    third = (*stack_a)->next->next->data;
 
     if (first > second && second < third && first < third)
     {
-        swap_first_sec(a);
+        swap_first_sec(stack_a);
         ft_printf("sa\n");
     }
     else if (first > second && second > third)
     {
-        swap_first_sec(a);
+        swap_first_sec(stack_a);
         ft_printf("sa\n");
-        shift_down(a);
+        shift_down(stack_a);
         ft_printf("rra\n");
     }
     else if (first > second && second < third && first > third)
     {
-        shift_up(a);
+        shift_up(stack_a);
         ft_printf("ra\n");
     }
     else if (first < second && second > third && first < third)
     {
-        swap_first_sec(a);
+        swap_first_sec(stack_a);
         ft_printf("sa\n");
-        shift_up(a);
+        shift_up(stack_a);
         ft_printf("ra\n");
     }
     else if (first < second && second > third && first > third)
     {
-        shift_down(a);
+        shift_down(stack_a);
         ft_printf("rra\n");
     }
 }
