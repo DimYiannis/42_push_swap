@@ -64,11 +64,13 @@ void sort_three(t_stack *stack_a)
   int second; 
   int third;
 
-    if (!*stack_a || (*stack_a)->next == *stack_a)
+  if (!*stack_a || (*stack_a)->next == *stack_a)
       return;
-    if ((*stack_a)->next->next == *stack_a && (*stack_a->data < stack_a->next->data))
-      shift_up(stack_a);
-
+  if ((*stack_a)->next->next == *stack_a && (*stack_a->data < stack_a->next->data))
+  {
+    shift_up(stack_a);
+    ft_printf("ra\n");
+  }
     first = (*stack_a)->data;
     second = (*stack_a)->next->data;
     third = (*stack_a)->next->next->data;
