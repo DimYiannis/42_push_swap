@@ -35,20 +35,16 @@ void push_to_b(t_stack *stack_a, t_stack *stack_b)
 
   if (!stack_a || !*stack_a)
     return;
-  while (stack_size(*stack_a) > 3)
-  {
-    tmp = deletion(stack_a);
-    if (!tmp)
-      break;
-    insert(stack_b, tmp);
-    ft_printf("pb\n");
-
-  }
+  tmp = deletion(stack_a);
+  if (!tmp)
+    break;
+  insert(stack_b, tmp);
+  ft_printf("pb\n");
 }
 
 void push_back_to_a(t_stack *stack_a, t_stack *stack_b)
 {
-    t_node *tmp; 
+  t_node *tmp; 
   if (!stack_b || !*stack_b)
     return;
   while (*stack_b)
@@ -58,6 +54,7 @@ void push_back_to_a(t_stack *stack_a, t_stack *stack_b)
       break;
     insert(stack_a, tmp);
     ft_printf("pa\n");
+    
   }
 }
 
@@ -67,8 +64,10 @@ void sort_three(t_stack *stack_a)
   int second; 
   int third;
 
-    if (!*stack_a || (*stack_a)->next == *stack_a || (*stack_a)->next->next == *stack_a)
-        return;
+    if (!*stack_a || (*stack_a)->next == *stack_a)
+      return;
+    if ((*stack_a)->next->next == *stack_a && (*stack_a->data < stack_a->next->data))
+      shift_up(stack_a);
 
     first = (*stack_a)->data;
     second = (*stack_a)->next->data;
