@@ -6,7 +6,7 @@
 /*   By: ydimitra <ydimitra@student.42.f>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 19:25:19 by ydimitra          #+#    #+#             */
-/*   Updated: 2025/11/18 15:38:55 by ydimitra         ###   ########.fr       */
+/*   Updated: 2025/11/26 16:04:34 by ydimitra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,20 +90,4 @@ void shift_down(t_stack *stack)
 }
 
 
-int is_number(char *str)
-{
-  int i;
 
-  i = 0;
-  if (!str || str[0] == '\0')
-    return (0);
-  if (str[0] == '-' || str[0] == '+')
-    i++;
-  while (str[i])
-  {
-    if (!ft_isdigit((unsigned char)str[i]))
-      return (0);
-    i++;
-  }
-  return (1);
-}
