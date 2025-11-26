@@ -6,7 +6,7 @@
 /*   By: ydimitra <ydimitra@student.42.f>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 19:25:19 by ydimitra          #+#    #+#             */
-/*   Updated: 2025/11/26 16:04:34 by ydimitra         ###   ########.fr       */
+/*   Updated: 2025/11/26 16:45:38 by ydimitra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,35 +59,71 @@ void insert(t_stack *stack, t_node *newnode)
   *stack = newnode;
 }
 
-void swap_first_sec(t_stack *stack)
+void displaystack(t_stack stack)
 {
-  int tmp_val;
-    
-  if (!stack || !*stack || (*stack)->next == *stack)
+    t_node *tmp;
+
+    if (!stack)
+        return;
+    tmp = stack;
+    while (1)
+    {
+        ft_printf("%d\n", tmp->data);
+        tmp = tmp->next;
+        if (tmp == stack)
+            break;
+    }
+}
+
+void createlist(int n, char *arr[], t_stack *stack)
+{
+  t_node *tmp;
+  t_node *newnode;
+  int i;
+  
+  i = 1;
+  if(!arr[i] || !is_number(arr[i]))
+  {
+      ft_printf("Error\n");
+      free_up(*stack);
+      *stack = NULL;
+      return;
+  }
+  *stack = malloc(sizeof(t_node));
+  if (!(*stack))
+  {
+    ft_printf("Error\n");
+    *stack = NULL;
     return;
-  tmp_val = (*stack)->data;
-  (*stack)->data = (*stack)->next->data;
-  (*stack)->next->data = tmp_val;
+  }
+  (*stack)->data = ft_atoi(arr[1]);
+  (*stack)->next = *stack;
+  (*stack)->prev = *stack;
+  tmp = *stack;
+  i = 2;
+  while (i < n)
+  {
+    if(!arr[i] || !is_number(arr[i]))
+    {
+      ft_printf("Error\n");
+      free_up(*stack);
+      *stack = NULL;
+      return;
+    }
+    newnode = malloc(sizeof(t_node));
+    if (!newnode)
+    {
+      ft_printf("Error\n");
+      free_up(*stack);
+      *stack = NULL;
+      return;
+    }
+    newnode->data = ft_atoi(arr[i]);
+    newnode->next = *stack;
+    newnode->prev = tmp;
+    tmp->next = newnode;
+    (*stack)->prev = newnode;
+    tmp = newnode;
+    i++;
+  }
 }
-
-void swap_firsts(t_stack *stack_a, t_stack *stack_b)
-{
-  int tmp_val;
-
-  tmp_val = (*stack_a)->data;
-  (*stack_a)->data = (*stack_b)->data;
-  (*stack_b)->data = tmp_val;
-}
-
-void shift_up(t_stack *stack)
-{
-  *stack = (*stack)->next;
-}
-
-void shift_down(t_stack *stack)
-{
-  *stack = (*stack)->prev;
-}
-
-
-
