@@ -6,29 +6,12 @@
 /*   By: ydimitra <ydimitra@student.42.f>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 15:39:12 by ydimitra          #+#    #+#             */
-/*   Updated: 2025/11/26 16:06:57 by ydimitra         ###   ########.fr       */
+/*   Updated: 2025/11/26 16:47:23 by ydimitra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int stack_size(t_stack stack)
-{
-  t_node *tmp;
-  int count = 0;
-
-  if (!stack)
-    return 0;
-  tmp = stack;
-  count++;
-  tmp = tmp->next;
-  while (tmp != stack)
-  {
-    count++;
-    tmp = tmp->next;
-  }
-  return (count);
-}
 void push_to_b(t_stack *stack_a, t_stack *stack_b)
 {
     t_node *tmp; 
@@ -58,4 +41,22 @@ void push_back_to_a(t_stack *stack_a, t_stack *stack_b)
   }
 }
 
+void swap_first_sec(t_stack *stack)
+{
+  int tmp_val;
+    
+  if (!stack || !*stack || (*stack)->next == *stack)
+    return;
+  tmp_val = (*stack)->data;
+  (*stack)->data = (*stack)->next->data;
+  (*stack)->next->data = tmp_val;
+}
 
+void swap_firsts(t_stack *stack_a, t_stack *stack_b)
+{
+  int tmp_val;
+
+  tmp_val = (*stack_a)->data;
+  (*stack_a)->data = (*stack_b)->data;
+  (*stack_b)->data = tmp_val;
+}

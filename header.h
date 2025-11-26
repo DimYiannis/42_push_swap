@@ -6,7 +6,7 @@
 /*   By: ydimitra <ydimitra@student.42.f>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 16:16:02 by ydimitra          #+#    #+#             */
-/*   Updated: 2025/11/18 15:42:30 by ydimitra         ###   ########.fr       */
+/*   Updated: 2025/11/26 16:39:39 by ydimitra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ void sort_three(t_stack *stack_a);
 void push_back_to_a(t_stack *stack_a, t_stack *stack_b);
 void push_to_b(t_stack *stack_a, t_stack *stack_b);
 int stack_size(t_stack stack);
+int stack_sorted(t_stack *stack);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ydimitra <ydimitra@student.42.f>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 16:06:22 by ydimitra          #+#    #+#             */
-/*   Updated: 2025/11/26 16:06:52 by ydimitra         ###   ########.fr       */
+/*   Updated: 2025/11/26 16:47:38 by ydimitra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,14 @@ void sort_three(t_stack *stack_a)
         shift_down(stack_a);
         ft_printf("rra\n");
     }
+}
+
+void shift_up(t_stack *stack)
+{
+  *stack = (*stack)->next;
+}
+
+void shift_down(t_stack *stack)
+{
+  *stack = (*stack)->prev;
 }
