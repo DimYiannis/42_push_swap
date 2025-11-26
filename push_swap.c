@@ -121,7 +121,18 @@ void push_swap(t_stack *stack_a, t_stack *stack_b)
     return;
   }
 
-  push_to_b(stack_a, stack_b);
+  while (stack_size(stack_b) < 3)
+    push_to_b(stack_a, stack_b);
+  //set max min and sort the 2 nodes
+  if (*stack_b->data > *stack_b->next->data)
+    shift_up(*stack_b);
+
+  while (stack_size(stack_a) > 0)
+  {
+    // find cheapest
+    push_to_b(stack_a, stack_b);
+    // sort 
+  }
   sort_three(stack_a);
   push_back_to_a(stack_a, stack_b);
 }
