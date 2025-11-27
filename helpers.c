@@ -6,7 +6,7 @@
 /*   By: ydimitra <ydimitra@student.42.f>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 19:25:19 by ydimitra          #+#    #+#             */
-/*   Updated: 2025/11/26 16:45:38 by ydimitra         ###   ########.fr       */
+/*   Updated: 2025/11/27 18:25:45 by ydimitra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ void createlist(int n, char *arr[], t_stack *stack)
     return;
   }
   (*stack)->data = ft_atoi(arr[1]);
+  (*stack)->distance = 0;
   (*stack)->next = *stack;
   (*stack)->prev = *stack;
   tmp = *stack;
@@ -119,6 +120,7 @@ void createlist(int n, char *arr[], t_stack *stack)
       return;
     }
     newnode->data = ft_atoi(arr[i]);
+    newnode->distance = 0;
     newnode->next = *stack;
     newnode->prev = tmp;
     tmp->next = newnode;
