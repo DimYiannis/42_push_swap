@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cost.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ydimitra <ydimitra@student.42.f>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 14:52:06 by ydimitra          #+#    #+#             */
-/*   Updated: 2025/11/27 15:16:09 by ydimitra         ###   ########.fr       */
+/*   Created: 2025/11/27 18:08:57 by ydimitra          #+#    #+#             */
+/*   Updated: 2025/11/27 18:16:14 by ydimitra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "header.h"
 
-int main (int argc, char *argv[])
+t_node *target(t_stack *stack_a, t_stack *stack_b)
 {
-  t_stack stack_a;
-  t_stack stack_b;
+ if (!stack_a || !*stack_a || !stack_b || !*stack_b)
+}
 
-  if (argc < 2)
-    return (1);
-  stack_a = NULL;
-  stack_b = NULL;
-  createlist(argc, argv, &stack_a);
-  if (!stack_a)
-    return (1);
-  push_swap(&stack_a, &stack_b);
-  ft_printf("result: \n");
-  displaystack(stack_a);
-  if (stack_a != NULL)
-    free_up(stack_a);
-  return (0);
+int distance_to_head(t_stack *stack)
+{
+  int distance;
+  int stack_len;
+
+  stack_len = (stack_size(&stack));
+  distance = 0;
+  if (stack_len % 2 = 0)
+  {
+  //distance = median - i
+  }
+  else if (stack_len % 2 != 0)
+  {
+// node->next->distance = median
+  }
 }

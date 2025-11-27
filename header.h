@@ -6,7 +6,7 @@
 /*   By: ydimitra <ydimitra@student.42.f>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 16:16:02 by ydimitra          #+#    #+#             */
-/*   Updated: 2025/11/26 16:39:39 by ydimitra         ###   ########.fr       */
+/*   Updated: 2025/11/27 16:48:35 by ydimitra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ typedef struct s_node
   int data;
   struct s_node *next;
   struct s_node *prev;
+  int index;
+  int distance; 
 } t_node;
 
 typedef t_node *t_stack;
