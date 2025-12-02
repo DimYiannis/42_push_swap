@@ -13,9 +13,34 @@
 
 #include "header.h"
 
+t_node *max_node(t_stack stack)
+{
+  int len;
+  int i;
+  t_stack tmp;
+  t_stack max;
+
+  i = 0;
+  if (!stack)
+    return (NULL);
+  len = stack_len(stack);
+  tmp = stack;
+  max = stack;
+  while (i < len)
+  {
+    if (tmp->data > max->data)
+      max = tmp;
+    tmp = tmp->next;
+    i++;
+  }
+  return (max);
+}
+
 t_node *target(t_stack *stack_a, t_stack *stack_b)
 {
  if (!stack_a || !*stack_a || !stack_b || !*stack_b)
+    return (NULL)
+  
 }
 
 int distance_to_head(t_stack *stack)
