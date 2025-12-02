@@ -17,30 +17,37 @@ t_node *max_node(t_stack stack)
 {
   int len;
   int i;
-  t_stack tmp;
   t_stack max;
 
   i = 0;
   if (!stack)
     return (NULL);
   len = stack_len(stack);
-  tmp = stack;
   max = stack;
   while (i < len)
   {
-    if (tmp->data > max->data)
-      max = tmp;
-    tmp = tmp->next;
+    if (stack->data > max->data)
+      max = stack;
+    stack = stack->next;
     i++;
   }
   return (max);
 }
 
-t_node *target(t_stack *stack_a, t_stack *stack_b)
+t_node *target(t_stack stack_a, t_stack stack_b)
 {
- if (!stack_a || !*stack_a || !stack_b || !*stack_b)
-    return (NULL)
-  
+  t_stack target;
+
+  if (!stack_a || !*stack_a || !stack_b || !*stack_b)
+    return (NULL);
+  if (stack_a->data > stack_b->data)
+  {
+    target = (*stack_b);
+
+  }
+  else
+    target = max_node(stack_b);
+  return (target);
 }
 
 int distance_to_head(t_stack *stack)
