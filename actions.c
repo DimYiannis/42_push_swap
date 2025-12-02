@@ -20,7 +20,7 @@ void push_to_b(t_stack *stack_a, t_stack *stack_b)
     return;
   tmp = deletion(stack_a);
   if (!tmp)
-    break;
+   return;
   insert(stack_b, tmp);
   ft_printf("pb\n");
 }
