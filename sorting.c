@@ -20,7 +20,7 @@ void sort_three(t_stack *stack_a)
 
   if (!*stack_a || (*stack_a)->next == *stack_a)
       return;
-  if ((*stack_a)->next->next == *stack_a && (*stack_a->data < stack_a->next->data))
+  if ((*stack_a)->next->next == *stack_a && ((*stack_a)->data < (*stack_a)->next->data))
   {
     shift_up(stack_a);
     ft_printf("ra\n");

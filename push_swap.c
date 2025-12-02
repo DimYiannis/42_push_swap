@@ -34,11 +34,11 @@ void push_swap(t_stack *stack_a, t_stack *stack_b)
     return;
   }
 
-  while (stack_size(stack_b) < 3)
+  while (stack_size(*stack_b) < 3)
     push_to_b(stack_a, stack_b);
-  if (*stack_b->data > *stack_b->next->data)
-    shift_up(*stack_b);
-  while (stack_size(stack_a) > 0)
+  if ((*stack_b)->data > (*stack_b)->next->data)
+    shift_up(stack_b);
+  while (stack_size(*stack_a) > 0)
   {
     // find cheapest
     push_to_b(stack_a, stack_b);
