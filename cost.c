@@ -55,6 +55,7 @@ t_node *target(t_stack stack_a, t_stack stack_b)
     }
     else
       target = max_node(stack_b);
+    i++;
   }
   return (target);
 }
