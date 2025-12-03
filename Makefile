@@ -5,7 +5,7 @@ NAME = push_swap
 PRINTF_DIR = printf
 PRINTF = $(PRINTF_DIR)/libftprintf.a
 
-SRC =  push_swap.c actions.c helpers.c main.c utils.c sorting.c
+SRC =  push_swap.c actions.c helpers.c main.c utils.c sorting.c cost.c
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
