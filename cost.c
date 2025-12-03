@@ -121,6 +121,8 @@ t_node *cost(t_stack stack_a, t_stack stack_b)
   i = 0;
   len = stack_size(stack_a);
   result = stack_a;
+  distance_to_head(&stack_a);
+  distance_to_head(&stack_b);
   while (i < len)
   {
     target(stack_a, stack_b);
