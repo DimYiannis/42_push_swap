@@ -34,7 +34,7 @@ t_node *max_node(t_stack stack)
   return (max);
 }
 
-t_node *target(t_stack stack_a, t_stack stack_b)
+void target(t_stack stack_a, t_stack stack_b)
 {
   t_stack target;
   int i;
@@ -48,16 +48,19 @@ t_node *target(t_stack stack_a, t_stack stack_b)
   {
     if (stack_a->data > stack_b->data)
     {
-      target = stack_b;
+      stack_a->target = stack_b;
       stack_b = stack_b->next;
-      if (stack_b->data > target->data)
-      target = stack_b;
+      if (stack_b->data > stack_a->target->data)
+        stack_a->target = stack_b;
     }
     else
-      target = max_node(stack_b);
+    { 
+      stack_b = stack_b->next;
+      if (i = len - 1)
+        stack_a->target = max_node(stack_b);
+    }
     i++;
   }
-  return (target);
 }
 
 
@@ -93,7 +96,6 @@ int distance_to_head(t_stack *stack)
   }
   else if (stack_len % 2 != 0)
   {
-    // node->next->distance = median
      while (i <= median)
     {
       tmp->distance = i;
@@ -110,6 +112,25 @@ int distance_to_head(t_stack *stack)
       tmp = tmp->prev;
       i++;
     }
-
   }
+}
+
+t_node *cost(t_stack stack_a, t_stack stack_b)
+{
+  int i;
+  int len;
+  t_node *result;
+
+  i = 0;
+  len = stack_len(stack_a);
+  result = stack_a;
+  while (i < len)
+  {
+    target(stack_a, stack_b);
+    stack_a->cost = stack_a->distance + stack_a->target->distance;
+    if (result->cost < stack->cost)
+      result = stack_a;
+    stack_a = stack_a->next;
+  }
+  return (result);
 }
