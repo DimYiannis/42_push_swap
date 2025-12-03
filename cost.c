@@ -22,7 +22,7 @@ t_node *max_node(t_stack stack)
   i = 0;
   if (!stack)
     return (NULL);
-  len = stack_len(stack);
+  len = stack_size(stack);
   max = stack;
   while (i < len)
   {
@@ -36,12 +36,11 @@ t_node *max_node(t_stack stack)
 
 void target(t_stack stack_a, t_stack stack_b)
 {
-  t_stack target;
   int i;
   int len;
 
   i = 0;
-  len = stack_len(stack_b);
+  len = stack_size(stack_b);
   if (!stack_a  || !stack_b)
     return;
   while (i < len)
@@ -64,9 +63,8 @@ void target(t_stack stack_a, t_stack stack_b)
 }
 
 
-int distance_to_head(t_stack *stack)
+void distance_to_head(t_stack *stack)
 {
-  int distance;
   int stack_len;
   int median;
   int i;
@@ -75,7 +73,6 @@ int distance_to_head(t_stack *stack)
   tmp = *stack;
   i = 0;
   stack_len = (stack_size(*stack));
-  distance = 0;
   median = stack_len / 2;
   if (stack_len % 2 == 0)
   {
@@ -86,7 +83,7 @@ int distance_to_head(t_stack *stack)
       i++;
     }
     i = 0;
-    tmp = stack;
+    tmp = *stack;
     while (i < median)
     {
       tmp->distance = i;
@@ -105,7 +102,7 @@ int distance_to_head(t_stack *stack)
       i++;
     }
     i = 0;
-    tmp = stack;
+    tmp = *stack;
     while (i < median)
     {
       tmp->distance = i;
@@ -122,7 +119,7 @@ t_node *cost(t_stack stack_a, t_stack stack_b)
   t_node *result;
 
   i = 0;
-  len = stack_len(stack_a);
+  len = stack_size(stack_a);
   result = stack_a;
   while (i < len)
   {
