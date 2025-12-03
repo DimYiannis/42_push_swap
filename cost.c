@@ -128,7 +128,7 @@ t_node *cost(t_stack stack_a, t_stack stack_b)
   {
     target(stack_a, stack_b);
     stack_a->cost = stack_a->distance + stack_a->target->distance;
-    if (result->cost > stack->cost)
+    if (result->cost > stack_a->cost)
       result = stack_a;
     stack_a = stack_a->next;
   }
