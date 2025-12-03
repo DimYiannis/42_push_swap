@@ -15,39 +15,22 @@
 
 void push_swap(t_stack *stack_a, t_stack *stack_b)
 {
-  int size = 0;
-  t_node *tmp;
-
-  tmp = *stack_a;
-  if (!tmp)
+  int len;
+  
+  if (!stack_a)
       return;
-  size++;
-  tmp = tmp->next;
-  while (tmp != *stack_a)
-  {
-    size++;
-    tmp = tmp->next;
-  }
-  if (size <=3)
+  len = stack_len(stack_a);
+  if (len <=3)
   {
     sort_three(stack_a);
     return;
   }
-
   while (stack_size(*stack_b) < 3)
     push_to_b(stack_a, stack_b);
   if ((*stack_b)->data > (*stack_b)->next->data)
     shift_up(stack_b);
-  while (stack_size(*stack_a) > 0)
-  {
-    // target
-
-    // find cheapest
-    // 
-    push_to_b(stack_a, stack_b);
-    // sort 
-
-  }
+    while (stack_size(*stack_a) > 3)
+      push_to_b(cost(stack_a, stack_b), stack_b);
   sort_three(stack_a);
   push_back_to_a(stack_a, stack_b);
 }
