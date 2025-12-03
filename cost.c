@@ -42,8 +42,8 @@ void target(t_stack stack_a, t_stack stack_b)
 
   i = 0;
   len = stack_len(stack_b);
-  if (!stack_a || !*stack_a || !stack_b || !*stack_b)
-    return (NULL);
+  if (!stack_a  || !stack_b)
+    return;
   while (i < len)
   {
     if (stack_a->data > stack_b->data)
@@ -56,7 +56,7 @@ void target(t_stack stack_a, t_stack stack_b)
     else
     { 
       stack_b = stack_b->next;
-      if (i = len - 1)
+      if (i == len - 1)
         stack_a->target = max_node(stack_b);
     }
     i++;
@@ -72,12 +72,12 @@ int distance_to_head(t_stack *stack)
   int i;
   t_node *tmp;
 
-  tmp = stack;
+  tmp = *stack;
   i = 0;
-  stack_len = (stack_size(&stack));
+  stack_len = (stack_size(*stack));
   distance = 0;
   median = stack_len / 2;
-  if (stack_len % 2 = 0)
+  if (stack_len % 2 == 0)
   {
     while (i <= median)
     {

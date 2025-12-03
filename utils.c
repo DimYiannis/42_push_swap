@@ -51,7 +51,7 @@ int stack_sorted(t_stack *stack)
 
 int stack_size(t_stack stack)
 {
-  t_node *tmp;
+  t_node tmp;
   int count = 0;
 
   if (!stack)
