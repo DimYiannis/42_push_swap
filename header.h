@@ -21,7 +21,9 @@ typedef struct s_node
   int data;
   struct s_node *next;
   struct s_node *prev;
-  int distance; 
+  int distance;
+  struct s_node *target;
+  int cost;
 } t_node;
 
 typedef t_node *t_stack;
@@ -42,5 +44,8 @@ void push_back_to_a(t_stack *stack_a, t_stack *stack_b);
 void push_to_b(t_stack *stack_a, t_stack *stack_b);
 int stack_size(t_stack stack);
 int stack_sorted(t_stack *stack);
+void target(t_stack stack_a, t_stack stack_b);
+t_node *cost(t_stack stack_a, t_stack stack_b);
+
 
 #endif
