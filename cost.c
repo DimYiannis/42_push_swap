@@ -55,7 +55,7 @@ t_node *min_node(t_stack stack)
   return (min);
 }
 
-
+// closest smaller
 void target_in_b(t_stack stack_a, t_stack stack_b)
 {
   int i;
@@ -84,6 +84,7 @@ void target_in_b(t_stack stack_a, t_stack stack_b)
   }
 }
 
+// closest bigger
 void target_in_a(t_stack stack_a, t_stack stack_b)
 {
   int i;
@@ -184,6 +185,28 @@ t_node *cost_to_b(t_stack stack_a, t_stack stack_b)
     if (result->cost > stack_a->cost)
       result = stack_a;
     stack_a = stack_a->next;
+  }
+  return (result);
+}
+
+t_node *cost_to_a(t_stack stack_a, t_stack stack_b)
+{
+  int i;
+  int len;
+  t_node *result;
+
+  i = 0;
+  len = stack_size(stack_b);
+  result = stack_b;
+  distance_to_head(&stack_b);
+  distance_to_head(&stack_a);
+  while (i < len)
+  {
+    target_in_a(stack_b, stack_a);
+    stack_b->cost = stack_b->distance + stack_b->target->distance;
+    if (resut->cost > stack_b)
+      result = stack_b;
+    stack_b = stack_b->next;
   }
   return (result);
 }
