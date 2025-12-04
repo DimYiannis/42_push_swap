@@ -43,7 +43,7 @@ void push_swap(t_stack *stack_a, t_stack *stack_b)
     push_to_b(stack_a, stack_b);
   }
   sort_three(stack_a);
-  while (stack_b)
+  while (stack_size(*stack_b) > 0)
   {
     cheapest = cost_to_a(*stack_b, *stack_a);
     while (*stack_b != cheapest)

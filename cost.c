@@ -185,6 +185,7 @@ t_node *cost_to_b(t_stack stack_a, t_stack stack_b)
     if (result->cost > stack_a->cost)
       result = stack_a;
     stack_a = stack_a->next;
+    i++;
   }
   return (result);
 }
@@ -204,9 +205,10 @@ t_node *cost_to_a(t_stack stack_a, t_stack stack_b)
   {
     target_in_a(stack_b, stack_a);
     stack_b->cost = stack_b->distance + stack_b->target->distance;
-    if (resut->cost > stack_b)
+    if (result->cost > stack_b->cost)
       result = stack_b;
     stack_b = stack_b->next;
+    i++;
   }
   return (result);
 }
