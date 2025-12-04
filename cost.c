@@ -34,6 +34,28 @@ t_node *max_node(t_stack stack)
   return (max);
 }
 
+t_node *min_node(t_stack stack)
+{
+  int len;
+  int i;
+  t_stack min;
+
+  i = 0;
+  if (!stack)
+    return (NULL);
+  len = stack_size(stack);
+  min = stack;
+  while (i < len)
+  {
+    if (stack->data < min->data)
+      min = stack;
+    stack = stack->next;
+    i++;
+  }
+  return (min);
+}
+
+
 void target_in_b(t_stack stack_a, t_stack stack_b)
 {
   int i;
@@ -57,6 +79,34 @@ void target_in_b(t_stack stack_a, t_stack stack_b)
       stack_b = stack_b->next;
       if (i == len - 1)
         stack_a->target = max_node(stack_b);
+    }
+    i++;
+  }
+}
+
+void target_in_a(t_stack stack_a, t_stack stack_b)
+{
+  int i;
+  int len;
+
+  i = 0;
+  len = stack_size(stack_b);
+  if (!stack_a  || !stack_b)
+    return;
+  while (i < len)
+  {
+    if (stack_a->data < stack_b->data)
+    {
+      stack_a->target = stack_b;
+      stack_b = stack_b->next;
+      if (stack_b->data < stack_a->target->data)
+        stack_a->target = stack_b;
+    }
+    else
+    { 
+      stack_b = stack_b->next;
+      if (i == len - 1)
+        stack_a->target = min_node(stack_b);
     }
     i++;
   }
