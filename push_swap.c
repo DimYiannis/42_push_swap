@@ -43,6 +43,17 @@ void push_swap(t_stack *stack_a, t_stack *stack_b)
     push_to_b(stack_a, stack_b);
   }
   sort_three(stack_a);
-  push_back_to_a(stack_a, stack_b);
+  while (stack_b)
+  {
+    cheapest = cost_to_a(*stack_b, *stack_a);
+    while (*stack_b != cheapest)
+    {
+      if (cheapest->after_median)
+        shift_down(stack_b);
+      else
+        shift_up(stack_b);
+    }
+    push_back_to_a(stack_a, stack_b);
+  }
 }
 
