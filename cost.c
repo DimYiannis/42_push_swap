@@ -34,7 +34,7 @@ t_node *max_node(t_stack stack)
   return (max);
 }
 
-void target(t_stack stack_a, t_stack stack_b)
+void target_in_b(t_stack stack_a, t_stack stack_b)
 {
   int i;
   int len;
@@ -116,7 +116,7 @@ void distance_to_head(t_stack *stack)
   }
 }
 
-t_node *cost(t_stack stack_a, t_stack stack_b)
+t_node *cost_to_b(t_stack stack_a, t_stack stack_b)
 {
   int i;
   int len;
@@ -129,7 +129,7 @@ t_node *cost(t_stack stack_a, t_stack stack_b)
   distance_to_head(&stack_b);
   while (i < len)
   {
-    target(stack_a, stack_b);
+    target_in_b(stack_a, stack_b);
     stack_a->cost = stack_a->distance + stack_a->target->distance;
     if (result->cost > stack_a->cost)
       result = stack_a;
