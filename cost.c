@@ -79,6 +79,7 @@ void distance_to_head(t_stack *stack)
     while (i <= median)
     {
       tmp->distance = i;
+      tmp->after_median = 0;
       tmp = tmp->next;
       i++;
     }
@@ -87,6 +88,7 @@ void distance_to_head(t_stack *stack)
     while (i < median)
     {
       tmp->distance = i;
+      tmp->after_median = 1;
       tmp = tmp->prev;
       i++;
     }
@@ -96,6 +98,7 @@ void distance_to_head(t_stack *stack)
      while (i <= median)
     {
       tmp->distance = i;
+      tmp->after_median = 0;
       tmp = tmp->next;
       if (i == median)
         tmp->next->distance = median;
@@ -106,6 +109,7 @@ void distance_to_head(t_stack *stack)
     while (i < median)
     {
       tmp->distance = i;
+      tmp->after_median = 1;
       tmp = tmp->prev;
       i++;
     }

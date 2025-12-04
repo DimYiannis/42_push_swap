@@ -24,6 +24,7 @@ typedef struct s_node
   int distance;
   struct s_node *target;
   int cost;
+  int after_median;
 } t_node;
 
 typedef t_node *t_stack;
