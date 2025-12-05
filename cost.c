@@ -30,7 +30,7 @@ t_node *max_node(t_stack stack)
       max = stack;
     stack = stack->next;
     i++;
-  } (a->data > b->data)
+  }
   return (max);
 }
 
