@@ -58,58 +58,58 @@ t_node *min_node(t_stack stack)
 // closest smaller
 void target_in_b(t_stack stack_a, t_stack stack_b)
 {
-  int i;
-  int len;
+  t_node *a;
+  int len_a;
+  int len_b;
+  t_node *b;
+  t_node *target;
 
-  i = 0;
-  len = stack_size(stack_b);
-  if (!stack_a  || !stack_b)
-    return;
-  while (i < len)
+  a = stack_a;
+  len_a = stack_size(stack_a);
+  len_b = stack_size(stack_b);  
+  while (len_b--)
   {
-    if (stack_a->data > stack_b->data)
+    if (b->data < a->data)
     {
-      stack_a->target = stack_b;
-      stack_b = stack_b->next;
-      if (stack_b->data > stack_a->target->data)
-        stack_a->target = stack_b;
+      if (!target || b->data > target->data)
+        target = b;
     }
-    else
-    { 
-      stack_b = stack_b->next;
-      if (i == len - 1)
-        stack_a->target = max_node(stack_b);
-    }
-    i++;
+    b = b->next;
   }
+  if (!target)
+    target = max_node(stack_b);
+  a->target = target;
+  a = a->next;
 }
 
 // closest bigger
-void target_in_a(t_stack stack_a, t_stack stack_b)
+void target_in_a(t_stack stack_b, t_stack stack_a)
 {
-  int i;
-  int len;
+  int len_a;
+  int len_b;
+  t_node *a;
+  t_node *b;
+  t_node *target;
 
-  i = 0;
-  len = stack_size(stack_b);
-  if (!stack_a  || !stack_b)
-    return;
-  while (i < len)
+  b = stack_b;
+    len_b = stack_size(stack_b);
+  while (len_b--)
   {
-    if (stack_a->data < stack_b->data)
+    len_a = stack_size(stack_a);
+    a = stack_a;
+    while (len_a--)
     {
-      stack_a->target = stack_b;
-      stack_b = stack_b->next;
-      if (stack_b->data < stack_a->target->data)
-        stack_a->target = stack_b;
+      if (a->data > b->data)
+      {
+        if (!target || a->data < target->data)
+          target = a;
+      }
+      a = a->next;
     }
-    else
-    { 
-      stack_b = stack_b->next;
-      if (i == len - 1)
-        stack_a->target = min_node(stack_b);
-    }
-    i++;
+    if (!target)
+      target = min_node(stack_a);
+    b->target = target;
+    b = b->next;
   }
 }
 
