@@ -12,6 +12,7 @@
 
 #include "header.h"
 
+
 void push_to_b(t_stack *stack_a, t_stack *stack_b)
 {
     t_node *tmp; 
@@ -36,8 +37,7 @@ void push_back_to_a(t_stack *stack_a, t_stack *stack_b)
     if (!tmp)
       break;
     insert(stack_a, tmp);
-    ft_printf("pa\n");
-    
+    ft_printf("pa\n"); 
   }
 }
 
@@ -60,3 +60,5 @@ void swap_firsts(t_stack *stack_a, t_stack *stack_b)
   (*stack_a)->data = (*stack_b)->data;
   (*stack_b)->data = tmp_val;
 }
+
+
