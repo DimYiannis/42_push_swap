@@ -30,7 +30,7 @@ t_node *max_node(t_stack stack)
       max = stack;
     stack = stack->next;
     i++;
-  }
+  } (a->data > b->data)
   return (max);
 }
 
@@ -65,22 +65,27 @@ void target_in_b(t_stack stack_a, t_stack stack_b)
   t_node *target;
 
   a = stack_a;
-  len_a = stack_size(stack_a);
-  len_b = stack_size(stack_b);  
-  while (len_b--)
+  len_a = stack_size(stack_a); 
+  while (len_a--)
   {
-    if (b->data < a->data)
+    target = NULL;
+    len_b = stack_size(stack_b);
+    b = stack_b;
+    while (len_b--)
     {
-      if (!target || b->data > target->data)
-        target = b;
+      if (b->data < a->data)
+      {
+        if (!target || b->data > target->data)
+          target = b;
+      }
+      b = b->next;
     }
-    b = b->next;
-  }
-  if (!target)
+    if (!target)
     target = max_node(stack_b);
-  a->target = target;
-  a = a->next;
-}
+    a->target = target;
+    a = a->next;
+  }
+ }
 
 // closest bigger
 void target_in_a(t_stack stack_b, t_stack stack_a)
@@ -95,6 +100,7 @@ void target_in_a(t_stack stack_b, t_stack stack_a)
     len_b = stack_size(stack_b);
   while (len_b--)
   {
+    target = NULL;
     len_a = stack_size(stack_a);
     a = stack_a;
     while (len_a--)
