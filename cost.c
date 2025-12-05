@@ -125,45 +125,20 @@ void distance_to_head(t_stack *stack)
   i = 0;
   stack_len = (stack_size(*stack));
   median = stack_len / 2;
-  if (stack_len % 2 == 0)
+  while (i < stack_len)
   {
-    while (i <= median)
+    if (i <= median) 
     {
       tmp->distance = i;
       tmp->after_median = 0;
-      tmp = tmp->next;
-      i++;
     }
-    i = 0;
-    tmp = *stack;
-    while (i < median)
+    else 
     {
-      tmp->distance = i;
+      tmp->distance = stack_len - i;
       tmp->after_median = 1;
-      tmp = tmp->prev;
-      i++;
     }
-  }
-  else if (stack_len % 2 != 0)
-  {
-     while (i <= median)
-    {
-      tmp->distance = i;
-      tmp->after_median = 0;
-      tmp = tmp->next;
-      if (i == median)
-        tmp->next->distance = median;
-      i++;
-    }
-    i = 0;
-    tmp = *stack;
-    while (i < median)
-    {
-      tmp->distance = i;
-      tmp->after_median = 1;
-      tmp = tmp->prev;
-      i++;
-    }
+    tmp = tmp->next;
+    i++;
   }
 }
 
