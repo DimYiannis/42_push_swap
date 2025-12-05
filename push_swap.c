@@ -46,14 +46,18 @@ void push_swap(t_stack *stack_a, t_stack *stack_b)
   while (stack_size(*stack_b) > 0)
   {
     cheapest = cost_to_a(*stack_b, *stack_a);
-    while (*stack_b != cheapest)
-    {
+      
       if (cheapest->after_median)
-        shift_down(stack_b);
+      {
+        for (int i = 0; i < cheapest->distance; i++)
+          shift_down(stack_b);
+      }
       else
-        shift_up(stack_b);
-    }
-    push_back_to_a(stack_a, stack_b);
+      {
+        for (int i = 0; i < cheapest->distance; i++)
+          shift_up(stack_b);
+      }
+      push_back_to_a(stack_a, stack_b); 
   }
 }
 

@@ -81,7 +81,7 @@ void target_in_b(t_stack stack_a, t_stack stack_b)
       b = b->next;
     }
     if (!target)
-    target = max_node(stack_b);
+      target = max_node(stack_b);
     a->target = target;
     a = a->next;
   }
