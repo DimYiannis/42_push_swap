@@ -49,5 +49,7 @@ void target_in_b(t_stack stack_a, t_stack stack_b);
 t_node *cost_to_b(t_stack stack_a, t_stack stack_b);
 t_node *cost_to_a(t_stack stack_a, t_stack stack_b);
 void insert_after_target(t_stack *stack, t_node *node, t_node *target);
+t_node *min_node(t_stack stack);
+void distance_to_head(t_stack *stack);
 
 #endif
