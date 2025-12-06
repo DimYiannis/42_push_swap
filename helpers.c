@@ -6,7 +6,7 @@
 /*   By: ydimitra <ydimitra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 19:25:19 by ydimitra          #+#    #+#             */
-/*   Updated: 2025/12/06 17:24:41 by ydimitra         ###   ########.fr       */
+/*   Updated: 2025/12/06 18:34:55 by ydimitra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,60 +70,5 @@ void	displaystack(t_stack stack)
 		tmp = tmp->next;
 		if (tmp == stack)
 			break ;
-	}
-}
-
-void	createlist(int n, char *arr[], t_stack *stack)
-{
-	t_node	*tmp;
-	t_node	*newnode;
-	int		i;
-
-	i = 1;
-	if (!arr[i] || !is_number(arr[i]))
-	{
-		ft_printf("Error\n");
-		free_up(*stack);
-		*stack = NULL;
-		return ;
-	}
-	*stack = malloc(sizeof(t_node));
-	if (!(*stack))
-	{
-		ft_printf("Error\n");
-		*stack = NULL;
-		return ;
-	}
-	(*stack)->data = ft_atoi(arr[1]);
-	(*stack)->distance = 0;
-	(*stack)->next = *stack;
-	(*stack)->prev = *stack;
-	tmp = *stack;
-	i = 2;
-	while (i < n)
-	{
-		if (!arr[i] || !is_number(arr[i]))
-		{
-			ft_printf("Error\n");
-			free_up(*stack);
-			*stack = NULL;
-			return ;
-		}
-		newnode = malloc(sizeof(t_node));
-		if (!newnode)
-		{
-			ft_printf("Error\n");
-			free_up(*stack);
-			*stack = NULL;
-			return ;
-		}
-		newnode->data = ft_atoi(arr[i]);
-		newnode->distance = 0;
-		newnode->next = *stack;
-		newnode->prev = tmp;
-		tmp->next = newnode;
-		(*stack)->prev = newnode;
-		tmp = newnode;
-		i++;
 	}
 }
