@@ -25,9 +25,7 @@ int main (int argc, char *argv[])
   createlist(argc, argv, &stack_a);
   if (!stack_a)
     return (1);
-  push_swap(&stack_a, &stack_b);
-  ft_printf("result: \n");
-  displaystack(stack_a);
+  push_swap(&stack_a, &stack_b); 
   if (stack_a != NULL)
     free_up(stack_a);
   return (0);
