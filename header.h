@@ -6,7 +6,7 @@
 /*   By: ydimitra <ydimitra@student.42.f>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 16:16:02 by ydimitra          #+#    #+#             */
-/*   Updated: 2025/12/06 17:01:30 by ydimitra         ###   ########.fr       */
+/*   Updated: 2025/12/06 17:26:30 by ydimitra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,5 @@ void initial_push_to_b(t_stack *stack_a, t_stack *stack_b);
 void push_all_but_three(t_stack *stack_a, t_stack *stack_b);
 void push_back_all(t_stack *stack_a, t_stack *stack_b);
 t_node *max_node(t_stack stack);
-void shift_down(t_stack *stack);
-void shift_up(t_stack *stack);
 
 #endif
