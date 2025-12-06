@@ -30,16 +30,25 @@ void push_swap(t_stack *stack_a, t_stack *stack_b)
   while (stack_size(*stack_b) < 3)
     push_to_b(stack_a, stack_b);
   if ((*stack_b)->data > (*stack_b)->next->data)
+  {
     shift_up(stack_b);
+    ft_printf("rb\n");
+  }
   while (stack_size(*stack_a) > 3)
   {
     cheapest = cost_to_b(*stack_a, *stack_b);
     while (*stack_a != cheapest)
     {
       if (cheapest->after_median)
+      {
         shift_down(stack_a);
+        ft_printf("rra\n");
+      }
       else
+      {
         shift_up(stack_a); 
+        ft_printf("ra\n");
+      }
     }
     push_to_b(stack_a, stack_b);
   }
