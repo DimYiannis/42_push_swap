@@ -6,7 +6,7 @@
 /*   By: ydimitra <ydimitra@student.42.f>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 16:20:40 by ydimitra          #+#    #+#             */
-/*   Updated: 2025/12/06 16:18:37 by ydimitra         ###   ########.fr       */
+/*   Updated: 2025/12/06 16:25:49 by ydimitra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void push_swap(t_stack *stack_a, t_stack *stack_b)
   if (!stack_a || !*stack_a)
     return;
   len = stack_size(*stack_a);
+  if (stack_sorted(stack_a))
+    return;
   if (len <= 3)
   {
     sort_three(stack_a);

@@ -6,7 +6,7 @@
 /*   By: ydimitra <ydimitra@student.42.f>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 16:03:01 by ydimitra          #+#    #+#             */
-/*   Updated: 2025/11/26 16:43:26 by ydimitra         ###   ########.fr       */
+/*   Updated: 2025/12/06 16:31:10 by ydimitra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,8 @@ int stack_sorted(t_stack *stack)
   while (tmp != head)
   {
     if (tmp->prev->data > tmp->data)
-      tmp = tmp->next;
-    else
       return (0);
+    tmp = tmp->next;
   }
   return (1);
 }
