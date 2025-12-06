@@ -16,7 +16,8 @@
 void push_swap(t_stack *stack_a, t_stack *stack_b)
 {
   int len;
-  t_node *cheapest; 
+  t_node *cheapest;
+  int i;
   
   if (!stack_a || !*stack_a)
       return;
@@ -45,19 +46,64 @@ void push_swap(t_stack *stack_a, t_stack *stack_b)
   sort_three(stack_a);
   while (stack_size(*stack_b) > 0)
   {
-    cheapest = cost_to_a(*stack_b, *stack_a);
-      
-      if (cheapest->after_median)
+    cheapest = cost_to_a(*stack_a, *stack_b);
+    i = 0;
+    if (cheapest->after_median)
+    {
+      while (i < cheapest->distance)
       {
-        for (int i = 0; i < cheapest->distance; i++)
-          shift_down(stack_b);
-      }
-      else
+        shift_down(stack_b);
+        ft_printf("rrb\n");
+        i++;
+      } 
+    }
+    else
+    {
+      while (i < cheapest->distance)
       {
-        for (int i = 0; i < cheapest->distance; i++)
-          shift_up(stack_b);
+        shift_up(stack_b);
+        ft_printf("rb\n");
+        i++;
       }
+    }
+    i = 0;
+    if (cheapest->target->after_median)
+    {
+      while (i < cheapest->target->distance)
+      {
+        shift_down(stack_a);
+        ft_printf("rra\n");
+        i++;
+      }
+    }
+    else
+    {
+      while (i < cheapest->target->distance)
+      {
+        shift_up(stack_a);
+        ft_printf("ra\n");
+        i++;
+      }
+    }
       push_back_to_a(stack_a, stack_b); 
+  }
+  t_node *min = min_node(*stack_a);
+  distance_to_head(stack_a);
+  if (min->after_median)
+  {
+    for (int i = 0; i < min->distance; i++)
+    {
+        shift_down(stack_a);
+        ft_printf("rra\n");
+    }
+  }
+  else
+  {
+    for (int i = 0; i < min->distance; i++)
+    {
+        shift_up(stack_a);
+        ft_printf("ra\n");
+    }
   }
 }
 

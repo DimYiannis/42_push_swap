@@ -31,11 +31,9 @@ void push_back_to_a(t_stack *stack_a, t_stack *stack_b)
   t_node *tmp; 
   if (!stack_b || !*stack_b)
     return;
-  while (*stack_b)
+  tmp = deletion(stack_b);   
+  if (tmp)
   {
-    tmp = deletion(stack_b);
-    if (!tmp)
-      break;
     insert(stack_a, tmp);
     ft_printf("pa\n"); 
   }

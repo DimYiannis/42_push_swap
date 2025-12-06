@@ -159,9 +159,9 @@ t_node *cost_to_b(t_stack stack_a, t_stack stack_b)
   result = stack_a;
   distance_to_head(&stack_a);
   distance_to_head(&stack_b);
+  target_in_b(stack_a, stack_b);
   while (i < len)
   {
-    target_in_b(stack_a, stack_b);
     stack_a->cost = stack_a->distance + stack_a->target->distance;
     if (result->cost > stack_a->cost)
       result = stack_a;
@@ -182,9 +182,9 @@ t_node *cost_to_a(t_stack stack_a, t_stack stack_b)
   result = stack_b;
   distance_to_head(&stack_b);
   distance_to_head(&stack_a);
+  target_in_a(stack_b, stack_a); 
   while (i < len)
   {
-    target_in_a(stack_b, stack_a);
     stack_b->cost = stack_b->distance + stack_b->target->distance;
     if (result->cost > stack_b->cost)
       result = stack_b;
