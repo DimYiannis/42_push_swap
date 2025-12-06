@@ -6,7 +6,7 @@
 /*   By: ydimitra <ydimitra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 18:08:57 by ydimitra          #+#    #+#             */
-/*   Updated: 2025/12/06 17:22:06 by ydimitra         ###   ########.fr       */
+/*   Updated: 2025/12/06 18:10:06 by ydimitra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,70 +52,6 @@ t_node	*min_node(t_stack stack)
 		i++;
 	}
 	return (min);
-}
-
-// closest smaller
-void	target_in_b(t_stack stack_a, t_stack stack_b)
-{
-	t_node	*a;
-	int		len_a;
-	int		len_b;
-	t_node	*b;
-	t_node	*target;
-
-	a = stack_a;
-	len_a = stack_size(stack_a);
-	while (len_a--)
-	{
-		target = NULL;
-		len_b = stack_size(stack_b);
-		b = stack_b;
-		while (len_b--)
-		{
-			if (b->data < a->data)
-			{
-				if (!target || b->data > target->data)
-					target = b;
-			}
-			b = b->next;
-		}
-		if (!target)
-			target = max_node(stack_b);
-		a->target = target;
-		a = a->next;
-	}
-}
-
-// closest bigger
-void	target_in_a(t_stack stack_b, t_stack stack_a)
-{
-	int		len_a;
-	int		len_b;
-	t_node	*a;
-	t_node	*b;
-	t_node	*target;
-
-	b = stack_b;
-	len_b = stack_size(stack_b);
-	while (len_b--)
-	{
-		target = NULL;
-		len_a = stack_size(stack_a);
-		a = stack_a;
-		while (len_a--)
-		{
-			if (a->data > b->data)
-			{
-				if (!target || a->data < target->data)
-					target = a;
-			}
-			a = a->next;
-		}
-		if (!target)
-			target = min_node(stack_a);
-		b->target = target;
-		b = b->next;
-	}
 }
 
 void	distance_to_head(t_stack *stack)
