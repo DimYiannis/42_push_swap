@@ -6,7 +6,7 @@
 /*   By: ydimitra <ydimitra@student.42.f>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 16:16:02 by ydimitra          #+#    #+#             */
-/*   Updated: 2025/11/27 18:24:25 by ydimitra         ###   ########.fr       */
+/*   Updated: 2025/12/06 16:16:07 by ydimitra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,10 @@ t_node *cost_to_a(t_stack stack_a, t_stack stack_b);
 void insert_after_target(t_stack *stack, t_node *node, t_node *target);
 t_node *min_node(t_stack stack);
 void distance_to_head(t_stack *stack);
+void rotate_node_to_top(t_stack *stack, t_node *node, char stack_name);
+void rotate_min_to_top(t_stack *stack_a);
+void initial_push_to_b(t_stack *stack_a, t_stack *stack_b);
+void push_all_but_three(t_stack *stack_a, t_stack *stack_b);
+void push_back_all(t_stack *stack_a, t_stack *stack_b);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ydimitra <ydimitra@student.42.f>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 16:20:40 by ydimitra          #+#    #+#             */
-/*   Updated: 2025/11/26 16:51:22 by ydimitra         ###   ########.fr       */
+/*   Updated: 2025/12/06 16:18:37 by ydimitra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,103 +16,18 @@
 void push_swap(t_stack *stack_a, t_stack *stack_b)
 {
   int len;
-  t_node *cheapest;
-  int i;
-  
+
   if (!stack_a || !*stack_a)
-      return;
+    return;
   len = stack_size(*stack_a);
   if (len <= 3)
   {
     sort_three(stack_a);
     return;
   }
-  while (stack_size(*stack_b) < 3)
-    push_to_b(stack_a, stack_b);
-  if ((*stack_b)->data > (*stack_b)->next->data)
-  {
-    shift_up(stack_b);
-    ft_printf("rb\n");
-  }
-  while (stack_size(*stack_a) > 3)
-  {
-    cheapest = cost_to_b(*stack_a, *stack_b);
-    while (*stack_a != cheapest)
-    {
-      if (cheapest->after_median)
-      {
-        shift_down(stack_a);
-        ft_printf("rra\n");
-      }
-      else
-      {
-        shift_up(stack_a); 
-        ft_printf("ra\n");
-      }
-    }
-    push_to_b(stack_a, stack_b);
-  }
+  initial_push_to_b(stack_a, stack_b);
+  push_all_but_three(stack_a, stack_b);
   sort_three(stack_a);
-  while (stack_size(*stack_b) > 0)
-  {
-    cheapest = cost_to_a(*stack_a, *stack_b);
-    i = 0;
-    if (cheapest->after_median)
-    {
-      while (i < cheapest->distance)
-      {
-        shift_down(stack_b);
-        ft_printf("rrb\n");
-        i++;
-      } 
-    }
-    else
-    {
-      while (i < cheapest->distance)
-      {
-        shift_up(stack_b);
-        ft_printf("rb\n");
-        i++;
-      }
-    }
-    i = 0;
-    if (cheapest->target->after_median)
-    {
-      while (i < cheapest->target->distance)
-      {
-        shift_down(stack_a);
-        ft_printf("rra\n");
-        i++;
-      }
-    }
-    else
-    {
-      while (i < cheapest->target->distance)
-      {
-        shift_up(stack_a);
-        ft_printf("ra\n");
-        i++;
-      }
-    }
-      push_back_to_a(stack_a, stack_b); 
-  }
-  t_node *min = min_node(*stack_a);
-  distance_to_head(stack_a);
-  if (min->after_median)
-  {
-    for (int i = 0; i < min->distance; i++)
-    {
-        shift_down(stack_a);
-        ft_printf("rra\n");
-    }
-  }
-  else
-  {
-    for (int i = 0; i < min->distance; i++)
-    {
-        shift_up(stack_a);
-        ft_printf("ra\n");
-    }
-  }
+  push_back_all(stack_a, stack_b);
+  rotate_min_to_top(stack_a);
 }
-
