@@ -6,7 +6,7 @@
 /*   By: ydimitra <ydimitra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 16:03:01 by ydimitra          #+#    #+#             */
-/*   Updated: 2025/12/06 17:22:41 by ydimitra         ###   ########.fr       */
+/*   Updated: 2025/12/07 21:19:36 by ydimitra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,11 @@ void	free_up(t_node *head)
 
 	if (!head)
 		return ;
-  if (head->next == head)
-  {
-    free(head);
-    return;
-  }
+	if (head->next == head)
+	{
+		free(head);
+		return ;
+	}
 	node = head->next;
 	head->prev->next = NULL;
 	while (node)
@@ -89,27 +89,26 @@ void	free_up(t_node *head)
 	}
 }
 
-int dup_vals(int n, char **str)
+int	dup_vals(int n, char **str)
 {
-  int i;
-  int j;
-  int num1;
-  int num2;
+	int	i;
+	int	j;
+	int	num1;
+	int	num2;
 
-  i = 1;
-  while (i < n)
-  {
-    num1 = ft_atoi(str[i]);
-    j = i + 1;
-    while (j < n)
-    {
-      num2 = ft_atoi(str[j]);
-      if (num1 == num2)
-        return (1);
-      j++;
-    }
-    i++;
-  }
-  return (0);
+	i = 1;
+	while (i < n)
+	{
+		num1 = ft_atoi(str[i]);
+		j = i + 1;
+		while (j < n)
+		{
+			num2 = ft_atoi(str[j]);
+			if (num1 == num2)
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }
-

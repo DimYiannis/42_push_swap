@@ -6,7 +6,7 @@
 /*   By: ydimitra <ydimitra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/06 18:16:51 by ydimitra          #+#    #+#             */
-/*   Updated: 2025/12/06 18:34:30 by ydimitra         ###   ########.fr       */
+/*   Updated: 2025/12/07 21:19:57 by ydimitra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ void	add_rest_nodes(int n, char *arr[], t_stack *stack, t_node *tmp)
 	{
 		newnode = create_node(arr[i]);
 		if (!newnode)
-    {
-      free_up(*stack);
-      *stack = NULL;
-      return;
-    }
+		{
+			free_up(*stack);
+			*stack = NULL;
+			return ;
+		}
 		newnode->next = *stack;
 		newnode->prev = tmp;
 		tmp->next = newnode;
@@ -64,20 +64,19 @@ void	add_rest_nodes(int n, char *arr[], t_stack *stack, t_node *tmp)
 
 void	createlist(int n, char *arr[], t_stack *stack)
 {
-  if (dup_vals(n, arr))
-  {
-    ft_printf("Error\n");
-    *stack = NULL;
-    return;
-  }
-  *stack = init_first_node(arr[1]);
+	if (dup_vals(n, arr))
+	{
+		ft_printf("Error\n");
+		*stack = NULL;
+		return ;
+	}
+	*stack = init_first_node(arr[1]);
 	if (!*stack)
-  {
-    ft_printf("Error\n");
-    return;
-  }
-  	add_rest_nodes(n, arr, stack, *stack);
-  if (!*stack)
-    ft_printf("Error\n");
-  }
-
+	{
+		ft_printf("Error\n");
+		return ;
+	}
+	add_rest_nodes(n, arr, stack, *stack);
+	if (!*stack)
+		ft_printf("Error\n");
+}

@@ -6,7 +6,7 @@
 /*   By: ydimitra <ydimitra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 19:25:19 by ydimitra          #+#    #+#             */
-/*   Updated: 2025/12/06 18:34:55 by ydimitra         ###   ########.fr       */
+/*   Updated: 2025/12/07 21:20:42 by ydimitra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,3 @@ void	displaystack(t_stack stack)
 			break ;
 	}
 }
-
