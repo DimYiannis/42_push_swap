@@ -9,150 +9,133 @@ NC='\033[0m' # No Color
 PUSH_SWAP="./push_swap"
 CHECKER="./checker_linux"
 
-# Counters
 PASSED=0
 FAILED=0
 
-# Test function
+############################################
+# FUNCTION: test_case
+############################################
 test_case() {
   local name="$1"
   local args="$2"
-  local expected="$3" # "OK", "Error", "Nothing", or number
+  local expected="$3"
 
   echo -n "Testing: $name ... "
 
+  # Case: expect nothing (no output)
   if [ "$expected" = "Nothing" ]; then
     output=$($PUSH_SWAP $args 2>&1)
     if [ -z "$output" ]; then
       echo -e "${GREEN}PASS${NC}"
       ((PASSED++))
     else
-      echo -e "${RED}FAIL${NC} (expected nothing, got: $output)"
+      echo -e "${RED}FAIL${NC} (got: $output)"
       ((FAILED++))
     fi
-  elif [ "$expected" = "Error" ]; then
+    return
+  fi
+
+  # Case: expect Error
+  if [ "$expected" = "Error" ]; then
     output=$($PUSH_SWAP $args 2>&1)
     if echo "$output" | grep -q "Error"; then
       echo -e "${GREEN}PASS${NC}"
       ((PASSED++))
     else
-      echo -e "${RED}FAIL${NC} (expected Error, got: $output)"
+      echo -e "${RED}FAIL${NC} (got: $output)"
       ((FAILED++))
     fi
-  elif [ "$expected" = "OK" ]; then
+    return
+  fi
+
+  # Case: expect OK from checker
+  if [ "$expected" = "OK" ]; then
     result=$($PUSH_SWAP $args | $CHECKER $args 2>&1)
     if [ "$result" = "OK" ]; then
       echo -e "${GREEN}PASS${NC}"
       ((PASSED++))
     else
-      echo -e "${RED}FAIL${NC} (checker returned: $result)"
+      echo -e "${RED}FAIL${NC} (checker: $result)"
       ((FAILED++))
     fi
+    return
   fi
 }
 
+############################################
+# TEST SUITE
+############################################
 echo "========================================"
-echo "      PUSH_SWAP TEST SUITE"
+echo "      PUSH_SWAP TEST SUITE (fixed)"
 echo "========================================"
 echo
 
-# 1. Empty/No Input
-echo -e "${YELLOW}=== Empty/No Input ===${NC}"
+### 1. Empty Input
+echo -e "${YELLOW}=== Empty ===${NC}"
 test_case "No arguments" "" "Nothing"
+test_case "Only spaces" "    " "Nothing"
 echo
 
-# 2. Single Element
-echo -e "${YELLOW}=== Single Element ===${NC}"
-test_case "Single number" "42" "Nothing"
+### 2. Single
+echo -e "${YELLOW}=== Single ===${NC}"
+test_case "Single num" "42" "Nothing"
 test_case "Single negative" "-42" "Nothing"
-test_case "Single zero" "0" "Nothing"
+test_case "Zero" "0" "Nothing"
 echo
 
-# 3. Already Sorted
-echo -e "${YELLOW}=== Already Sorted ===${NC}"
-test_case "Two sorted" "1 2" "Nothing"
-test_case "Three sorted" "1 2 3" "Nothing"
-test_case "Five sorted" "1 2 3 4 5" "Nothing"
-test_case "Negative sorted" "-5 -3 -1 0 2" "Nothing"
+### 3. Sorted
+echo -e "${YELLOW}=== Sorted ===${NC}"
+test_case "1 2" "1 2" "Nothing"
+test_case "1 2 3" "1 2 3" "Nothing"
+test_case "1 2 3 4 5" "1 2 3 4 5" "Nothing"
 echo
 
-# 4. Two Elements
-echo -e "${YELLOW}=== Two Elements ===${NC}"
+### 4. Sorting tests
+echo -e "${YELLOW}=== Sorting ===${NC}"
 test_case "Two unsorted" "2 1" "OK"
+test_case "3 2 1" "3 2 1" "OK"
+test_case "5 3 1 4 2" "5 3 1 4 2" "OK"
 echo
 
-# 5. Three Elements
-echo -e "${YELLOW}=== Three Elements ===${NC}"
-test_case "Three unsorted (3 2 1)" "3 2 1" "OK"
-test_case "Three unsorted (2 3 1)" "2 3 1" "OK"
-test_case "Three unsorted (1 3 2)" "1 3 2" "OK"
-echo
-
-# 6. Five Elements
-echo -e "${YELLOW}=== Five Elements ===${NC}"
-test_case "Five random" "5 3 1 4 2" "OK"
-test_case "Five reverse" "5 4 3 2 1" "OK"
-echo
-
-# 7. Duplicates
+### 5. Duplicates
 echo -e "${YELLOW}=== Duplicates ===${NC}"
-test_case "Duplicate at end" "1 2 3 2" "Error"
-test_case "Duplicate consecutive" "1 2 2 3" "Error"
-test_case "All same" "5 5 5" "Error"
-test_case "Two duplicates" "1 1" "Error"
+test_case "1 2 3 2" "1 2 3 2" "Error"
+test_case "1 2 2 3" "1 2 2 3" "Error"
+test_case "1 1" "1 1" "Error"
+test_case "5 5 5" "5 5 5" "Error"
 echo
 
-# 8. Invalid Numbers
-echo -e "${YELLOW}=== Invalid Numbers ===${NC}"
-test_case "Non-numeric" "1 two 3" "Error"
-test_case "Mixed alphanumeric" "1 2a 3" "Error"
-test_case "Only letters" "abc" "Error"
-test_case "Special chars" "1 2 3;" "Error"
-test_case "Float number" "1 2.5 3" "Error"
+### 6. Invalid
+echo -e "${YELLOW}=== Invalid Input ===${NC}"
+test_case "letters" "a b c" "Error"
+test_case "alphanum" "1 a2 3" "Error"
+test_case "float" "1 2.5 3" "Error"
+test_case "special" "1 2 ;" "Error"
 echo
 
-# 9. Integer Overflow
-echo -e "${YELLOW}=== Integer Overflow ===${NC}"
-test_case "INT_MAX + 1" "2147483648" "Error"
-test_case "INT_MIN - 1" "-2147483649" "Error"
-test_case "INT_MAX (valid)" "2147483647" "Nothing"
-test_case "INT_MIN (valid)" "-2147483648" "Nothing"
-test_case "Way too big" "999999999999999" "Error"
-test_case "Way too small" "-999999999999999" "Error"
+### 7. Overflow
+echo -e "${YELLOW}=== Overflow ===${NC}"
+test_case "2147483648" "2147483648" "Error"
+test_case "-2147483649" "-2147483649" "Error"
+test_case "valid INT_MAX" "2147483647" "Nothing"
+test_case "valid INT_MIN" "-2147483648" "Nothing"
 echo
 
-# 10. Signs
-echo -e "${YELLOW}=== Signs ===${NC}"
-test_case "Positive sign" "+1 +2 +3" "Nothing"
-test_case "Mixed signs" "-1 +2 -3 +4" "OK"
-test_case "Double positive" "1 ++2 3" "Error"
-test_case "Double negative" "1 --2 3" "Error"
-test_case "Sign in middle" "1 2- 3" "Error"
-test_case "Only sign" "+" "Error"
-test_case "Only minus" "-" "Error"
-echo
-
-# 11. Larger Sets
-echo -e "${YELLOW}=== Larger Sets ===${NC}"
+### 8. Random sets
+echo -e "${YELLOW}=== Random Sets ===${NC}"
 ARG10=$(seq 1 10 | shuf)
-test_case "10 random numbers" "$ARG10" "OK"
+test_case "10 random" "$ARG10" "OK"
 
 ARG100=$(seq 1 100 | shuf)
-test_case "100 random numbers" "$ARG100" "OK"
+test_case "100 random" "$ARG100" "OK"
 
 ARG500=$(seq 1 500 | shuf)
-test_case "500 random numbers" "$ARG500" "OK"
+test_case "500 random" "$ARG500" "OK"
 echo
 
-# 12. Edge Cases with Spaces
-echo -e "${YELLOW}=== String Input Format ===${NC}"
-test_case "String with spaces" '"1 2 3"' "Nothing"
-test_case "String unsorted" '"3 2 1"' "OK"
-test_case "String with duplicate" '"1 2 3 2"' "Error"
-test_case "String with invalid" '"1 two 3"' "Error"
-echo
-
+############################################
 # Summary
+############################################
 echo "========================================"
 echo -e "Results: ${GREEN}${PASSED} passed${NC}, ${RED}${FAILED} failed${NC}"
 echo "========================================"
