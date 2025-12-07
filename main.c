@@ -56,7 +56,7 @@ void two_args(char *argv, t_stack *stack)
   char **list;
   int size;
  
-  new_argv = ft_split(&argv[1], ' ');
+  new_argv = ft_split(argv, ' ');
   if (!new_argv)
   {
     printf("Error\n");
