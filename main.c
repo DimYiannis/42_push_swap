@@ -87,10 +87,7 @@ int	main(int argc, char *argv[])
 	if (!stack_a)
     return (1);
  	if (stack_sorted(&stack_a))
-	{
-		free_up(stack_a);
-		return (0);
-	}
+		return (free_up(stack_a), 0);
 	push_swap(&stack_a, &stack_b);
 	if (stack_a != NULL)
 		free_up(stack_a);

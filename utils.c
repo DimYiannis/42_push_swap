@@ -88,3 +88,28 @@ void	free_up(t_node *head)
 		node = tmp;
 	}
 }
+
+int dup_vals(int n, char **str)
+{
+  int i;
+  int j;
+  int num1;
+  int num2;
+
+  i = 1;
+  while (i < n)
+  {
+    num1 = ft_atoi(str[i]);
+    j = i + 1;
+    while (j < n)
+    {
+      num2 = ft_atoi(str[j]);
+      if (num1 == num2)
+        return (1);
+      j++;
+    }
+    i++;
+  }
+  return (0);
+}
+

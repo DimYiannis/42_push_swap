@@ -64,5 +64,5 @@ t_node				*find_closest_bigger(int value, t_stack stack_a);
 int            count_words(const char *s, char c);
 void two_args(char *str, t_stack *stack);
 void free_split(char **split);
-
+int dup_vals(int n, char **str);
 #endif

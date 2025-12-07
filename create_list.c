@@ -64,6 +64,12 @@ void	add_rest_nodes(int n, char *arr[], t_stack *stack, t_node *tmp)
 
 void	createlist(int n, char *arr[], t_stack *stack)
 {
+  if (dup_vals(n, arr))
+  {
+    ft_printf("Error\n");
+    *stack = NULL;
+    return;
+  }
   *stack = init_first_node(arr[1]);
 	if (!*stack)
   {
