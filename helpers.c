@@ -72,3 +72,4 @@ void	displaystack(t_stack stack)
 			break ;
 	}
 }
+

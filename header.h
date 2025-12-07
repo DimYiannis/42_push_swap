@@ -61,5 +61,8 @@ void				push_back_all(t_stack *stack_a, t_stack *stack_b);
 t_node				*max_node(t_stack stack);
 t_node				*find_closest_smaller(int value, t_stack stack_b);
 t_node				*find_closest_bigger(int value, t_stack stack_a);
+int            count_words(const char *s, char c);
+void two_args(char *str, t_stack *stack);
+void free_split(char **split);
 
 #endif
