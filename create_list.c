@@ -12,38 +12,25 @@
 
 #include "header.h"
 
-void	handle_error(t_stack *stack)
-{
-	ft_printf("Error\n");
-	free_up(*stack);
-	*stack = NULL;
-}
-
-t_node	*create_node(char *str, t_stack *stack)
+t_node	*create_node(char *str)
 {
 	t_node	*newnode;
 
 	if (!str || !is_number(str))
-	{
-		handle_error(stack);
 		return (NULL);
-	}
 	newnode = malloc(sizeof(t_node));
 	if (!newnode)
-	{
-		handle_error(stack);
 		return (NULL);
-	}
 	newnode->data = ft_atoi(str);
 	newnode->distance = 0;
 	return (newnode);
 }
 
-t_node	*init_first_node(char *str, t_stack *stack)
+t_node	*init_first_node(char *str)
 {
 	t_node	*first;
 
-	first = create_node(str, stack);
+	first = create_node(str);
 	if (!first)
 		return (NULL);
 	first->next = first;
@@ -59,9 +46,13 @@ void	add_rest_nodes(int n, char *arr[], t_stack *stack, t_node *tmp)
 	i = 2;
 	while (i < n)
 	{
-		newnode = create_node(arr[i], stack);
+		newnode = create_node(arr[i]);
 		if (!newnode)
-			return ;
+    {
+      free_up(*stack);
+      *stack = NULL;
+      return;
+    }
 		newnode->next = *stack;
 		newnode->prev = tmp;
 		tmp->next = newnode;
@@ -73,8 +64,14 @@ void	add_rest_nodes(int n, char *arr[], t_stack *stack, t_node *tmp)
 
 void	createlist(int n, char *arr[], t_stack *stack)
 {
-	*stack = init_first_node(arr[1], stack);
+  *stack = init_first_node(arr[1]);
 	if (!*stack)
-		return ;
-	add_rest_nodes(n, arr, stack, *stack);
-}
+  {
+    ft_printf("Error\n");
+    return;
+  }
+  	add_rest_nodes(n, arr, stack, *stack);
+  if (!*stack)
+    ft_printf("Error\n");
+  }
+

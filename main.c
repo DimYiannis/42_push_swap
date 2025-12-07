@@ -85,8 +85,8 @@ int	main(int argc, char *argv[])
   else
 	  createlist(argc, argv, &stack_a);
 	if (!stack_a)
-		return (1);
-	if (stack_sorted(&stack_a))
+    return (1);
+ 	if (stack_sorted(&stack_a))
 	{
 		free_up(stack_a);
 		return (0);

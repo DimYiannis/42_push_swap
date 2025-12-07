@@ -74,6 +74,11 @@ void	free_up(t_node *head)
 
 	if (!head)
 		return ;
+  if (head->next == head)
+  {
+    free(head);
+    return;
+  }
 	node = head->next;
 	head->prev->next = NULL;
 	while (node)
@@ -82,5 +87,4 @@ void	free_up(t_node *head)
 		free(node);
 		node = tmp;
 	}
-	free(head);
 }
