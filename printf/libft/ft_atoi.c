@@ -6,7 +6,7 @@
 /*   By: ydimitra <ydimitra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 14:15:58 by ydimitra          #+#    #+#             */
-/*   Updated: 2025/10/16 14:05:18 by ydimitra         ###   ########.fr       */
+/*   Updated: 2025/12/07 21:52:02 by ydimitra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ static int	ft_isnum(int c)
 
 int	ft_atoi(const char *str)
 {
-	int	sign;
+	int		sign;
 	long	num;
-	int	counter;
+	int		counter;
 
 	counter = 0;
 	sign = 1;

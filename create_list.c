@@ -6,22 +6,22 @@
 /*   By: ydimitra <ydimitra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/06 18:16:51 by ydimitra          #+#    #+#             */
-/*   Updated: 2025/12/07 21:19:57 by ydimitra         ###   ########.fr       */
+/*   Updated: 2025/12/07 21:51:53 by ydimitra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int is_valid_int(char *str)
+int	is_valid_int(char *str)
 {
-  long num;
+	long	num;
 
-  if (!is_number(str))
-    return (0);
-  num = ft_atoi(str);
-  if (num < INT_MIN || num > INT_MAX)
-    return (0);
-  return (1);
+	if (!is_number(str))
+		return (0);
+	num = ft_atoi(str);
+	if (num < INT_MIN || num > INT_MAX)
+		return (0);
+	return (1);
 }
 
 t_node	*create_node(char *str)
