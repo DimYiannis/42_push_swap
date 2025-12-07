@@ -32,7 +32,7 @@ static int	ft_isnum(int c)
 int	ft_atoi(const char *str)
 {
 	int	sign;
-	int	num;
+	long	num;
 	int	counter;
 
 	counter = 0;

@@ -12,11 +12,23 @@
 
 #include "header.h"
 
+int is_valid_int(char *str)
+{
+  long num;
+
+  if (!is_number(str))
+    return (0);
+  num = ft_atoi(str);
+  if (num < INT_MIN || num > INT_MAX)
+    return (0);
+  return (1);
+}
+
 t_node	*create_node(char *str)
 {
 	t_node	*newnode;
 
-	if (!str || !is_number(str))
+	if (!str || !is_valid_int(str))
 		return (NULL);
 	newnode = malloc(sizeof(t_node));
 	if (!newnode)
