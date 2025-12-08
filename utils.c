@@ -87,6 +87,7 @@ void	free_up(t_node *head)
 		free(node);
 		node = tmp;
 	}
+  free(head);
 }
 
 int	dup_vals(int n, char **str)
