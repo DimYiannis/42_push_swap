@@ -6,7 +6,7 @@
 /*   By: ydimitra <ydimitra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 16:16:02 by ydimitra          #+#    #+#             */
-/*   Updated: 2025/12/07 21:19:50 by ydimitra         ###   ########.fr       */
+/*   Updated: 2025/12/08 15:21:57 by ydimitra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,5 @@ int					count_words(const char *s, char c);
 void				two_args(char *str, t_stack *stack);
 void				free_split(char **split);
 int					dup_vals(int n, char **str);
-long	ft_atol(char *str, int *overflow);
+long				ft_atol(char *str, int *overflow);
 #endif

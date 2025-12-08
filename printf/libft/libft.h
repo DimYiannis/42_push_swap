@@ -6,7 +6,7 @@
 /*   By: ydimitra <ydimitra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 22:46:53 by yiannis           #+#    #+#             */
-/*   Updated: 2025/10/17 20:21:11 by ydimitra         ###   ########.fr       */
+/*   Updated: 2025/12/08 15:22:18 by ydimitra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,6 @@ t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
 t_list				*ft_lstlast(t_list *lst);
 void				ft_lstiter(t_list *lst, void (*f)(void *));
-int	ft_isnum(int c);
-int	ft_isspace(int c);
+int					ft_isnum(int c);
+int					ft_isspace(int c);
 #endif
