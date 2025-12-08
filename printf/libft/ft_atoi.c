@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	ft_isspace(int c)
+int	ft_isspace(int c)
 {
 	if (c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f'
 		|| c == '\r')
@@ -20,7 +20,7 @@ static int	ft_isspace(int c)
 	return (0);
 }
 
-static int	ft_isnum(int c)
+int	ft_isnum(int c)
 {
 	if (c >= 48 && c <= 57)
 	{

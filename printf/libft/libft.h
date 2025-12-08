@@ -67,5 +67,6 @@ t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
 t_list				*ft_lstlast(t_list *lst);
 void				ft_lstiter(t_list *lst, void (*f)(void *));
-
+int	ft_isspace(int c);
+int	ft_isnum(int c);
 #endif
