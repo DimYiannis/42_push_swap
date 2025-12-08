@@ -6,7 +6,7 @@
 /*   By: ydimitra <ydimitra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/06 18:16:51 by ydimitra          #+#    #+#             */
-/*   Updated: 2025/12/07 21:51:53 by ydimitra         ###   ########.fr       */
+/*   Updated: 2025/12/08 15:39:06 by ydimitra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	is_valid_int(char *str)
 {
 	long	num;
-  int overflow;
+	int		overflow;
 
 	if (!is_number(str))
 		return (0);
@@ -45,7 +45,7 @@ t_node	*init_first_node(char *str)
 
 	first = create_node(str);
 	if (!first)
-	  return (NULL);
+		return (NULL);
 	first->next = first;
 	first->prev = first;
 	return (first);
