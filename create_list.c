@@ -15,11 +15,12 @@
 int	is_valid_int(char *str)
 {
 	long	num;
+  int overflow;
 
 	if (!is_number(str))
 		return (0);
-	num = ft_atoi(str);
-	if (num < INT_MIN || num > INT_MAX)
+	num = ft_atol(str, &overflow);
+	if (overflow)
 		return (0);
 	return (1);
 }
@@ -44,7 +45,7 @@ t_node	*init_first_node(char *str)
 
 	first = create_node(str);
 	if (!first)
-		return (NULL);
+	  return (NULL);
 	first->next = first;
 	first->prev = first;
 	return (first);

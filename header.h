@@ -65,4 +65,5 @@ int					count_words(const char *s, char c);
 void				two_args(char *str, t_stack *stack);
 void				free_split(char **split);
 int					dup_vals(int n, char **str);
+long	ft_atol(char *str, int *overflow);
 #endif

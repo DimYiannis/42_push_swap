@@ -72,3 +72,56 @@ void	displaystack(t_stack stack)
 			break ;
 	}
 }
+
+static long check_overflow(char *str, int sign, int *overflow)
+{
+  long num;
+  int digit;
+  int min_last_digit = (int)(-(long)INT_MIN % 10);
+
+  num = 0;
+  while (ft_isnum(*str))
+  {
+    digit = *str - '0';
+    if (num > INT_MAX / 10)
+      return (*overflow = 1, 0);
+    if (num == INT_MAX / 10)
+    {
+      if (sign == 1 && digit > INT_MAX % 10)
+        return (*overflow = 1, 0);
+      if (sign == -1 && digit > min_last_digit)
+        return (*overflow = 1, 0);
+    }
+    num = num * 10 + digit;
+    str++;
+  }
+  return (num);
+}
+
+long	ft_atol(char *str, int *overflow)
+{
+	int		sign;
+	long	num;
+  int counter;
+
+  counter = 0;
+  *overflow = 0;
+	sign = 1;
+	num = 0;
+	while (ft_isspace(*str) == 1)
+		str++;
+	while (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			sign = -1; 
+		str++;
+    counter++;
+	}
+  if (counter > 1)
+    return (*overflow = 1, 0);
+  check_overflow(str, sign, overflow);
+  if (*overflow == 1)
+    return (0);
+	return (num * sign);
+}
+
