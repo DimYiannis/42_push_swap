@@ -18,16 +18,29 @@ The program must:
 
 ## Instructions
 
-### ✔️ Compilation
+### Compilation
+```bash
+make
+```
 
-Run `make` to generate the `push_swap` executable.
+### Usage
+```bash
+# Multiple arguments
+./push_swap 3 2 5 1 4
 
-To remove object files, use `make clean`.
+# Single string
+./push_swap "3 2 5 1 4"
 
-To fully clean all compiled files, use `make fclean`.
+# Test with checker
+ARG="3 2 5 1 4"; ./push_swap $ARG | ./checker_linux $ARG
+```
 
-To recompile everything from scratch, use `make re`.
-
+### Cleaning
+```bash
+make clean   # Remove object files
+make fclean  # Remove object files and executable
+make re      # Recompile
+```
 ---
 
 ### ✔️ Execution
@@ -65,15 +78,11 @@ valgrind --leak-check=full ./push_swap 5 4 6 2 1 3
 ## Resources
 ### 📚 Documentation & Algorithms
 
-42 Subject PDF
+- Turk Algorithm explanation
 
-Stack operations theory
+- [Push_Swap Turk algorithm explained in 6 steps] (https://pure-forest.medium.com/push-swap-turk-algorithm-explained-in-6-steps-4c6650a458c0)
 
-Sorting with stacks – concepts & examples
-
-Time complexity of sorting algorithms
-
-Circle linked list structures
+- [Push Swap — A journey to find most efficient sorting algorithm] (https://medium.com/@ayogun/push-swap-c1f5d2d41e97)
 
 ## 🤖 AI Usage Disclosure (Required by 42)
 
