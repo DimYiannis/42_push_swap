@@ -93,5 +93,5 @@ All logic and implementation were written manually following 42 standards.
 Author
 
 ydimitra
-42 Codam can you help me fix the mistakes?
+42 Codam 
 
