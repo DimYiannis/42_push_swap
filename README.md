@@ -1,63 +1,97 @@
+*This project has been created as part of the 42 curriculum by ydimitra.*
+
 # Push_Swap
 
-## Project Overview
+## Description
 
-Push_Swap is a sorting algorithm project.  
-The goal is to sort a stack of integers with a limited set of operations, using two stacks: `stack_a` and `stack_b`.
+Push_Swap is a project from the 42 curriculum whose goal is to sort a list of integers using two stacks (`stack_a` and `stack_b`) and a restricted set of operations.  
+The challenge is to produce the **shortest possible sequence of instructions** to sort the integers in ascending order.
+
+The program must:
+- Validate and parse input.
+- Detect duplicates and invalid integers.
+- Manage memory safely.
+- Output only the required sorting operations.
+- Use an efficient algorithm to minimize the number of operations.
 
 ---
+
+## Instructions
+
+### ✔️ Compilation
+
+Run `make` to generate the `push_swap` executable.
+
+To remove object files, use `make clean`.
+
+To fully clean all compiled files, use `make fclean`.
+
+To recompile everything from scratch, use `make re`.
+
+---
+
+### ✔️ Execution
+
+Run the program followed by a list of integers as arguments:
+
+./push_swap 4 2 5 1 6 3
+
+To verify the result using the 42 checker:
+
+./push_swap 4 2 5 1 6 3 | ./checker_linux 4 2 5 1 6 3
+
+
+
 
 ## Features
 
-- Sorts integers using only stack operations.
-- Handles positive and negative numbers.
-- Detects duplicates and invalid input.
-- Optimized to minimize the number of operations.
-- Memory-safe with all allocations freed.
+Sorting using restricted operations
 
----
+Duplicate detection
+
+Integer overflow checking
+
+Memory-safe implementation (all allocations freed)
+
+Random input example:
+
+./push_swap 3 9 1 7 2
 
 
-## Logic
+Check with Valgrind:
 
-The sorting strategy (often referred to as the “Turk” algorithm) works as follows:
+valgrind --leak-check=full ./push_swap 5 4 6 2 1 3
 
-1. **Initial Push to Stack B:**  
-   Push a portion of the elements from `stack_a` to `stack_b`, keeping a few elements in `stack_a` to sort directly (usually 3).
+## Resources
+### 📚 Documentation & Algorithms
 
-2. **Sorting Small Stack A:**  
-   Sort the small number of remaining elements in `stack_a` using simple comparisons (`sa`, `ra`, `rra`).
+42 Subject PDF
 
-3. **Calculating Costs:**  
-   For each element in `stack_b`, calculate the “cost” to move it to the correct position in `stack_a`.  
-   - The cost depends on how many rotations (`ra`/`rra`) or (`rb`/`rrb`) are needed.
+Stack operations theory
 
-4. **Move Cheapest Element:**  
-   Move the element with the lowest cost from `stack_b` to `stack_a` using the optimal combination of rotations and push (`pa`).
+Sorting with stacks – concepts & examples
 
-5. **Repeat Until Stack B is Empty:**  
-   Continue moving elements from `stack_b` to `stack_a` in order of minimal cost.
+Time complexity of sorting algorithms
 
-6. **Final Adjustment:**  
-   Rotate `stack_a` until the smallest element is at the top to complete the sort.
+Circle linked list structures
 
-This approach ensures that the number of operations is minimized while sorting efficiently.
+## 🤖 AI Usage Disclosure (Required by 42)
 
----
+AI was used only for:
 
-## Stack Operations
+Generating the README structure and improving clarity
 
-- **Swap:** `sa`, `sb`, `ss`
-- **Push:** `pa`, `pb`
-- **Rotate:** `ra`, `rb`, `rr`
-- **Reverse rotate:** `rra`, `rrb`, `rrr`
+Explaining Turk algorithm
 
----
+Assistance in debugging memory leaks by interpreting Valgrind output
 
-## Usage
+Helping restructure functions for readability
 
-Compile the project:
+No AI-generated code was directly used in the final project.
+All logic and implementation were written manually following 42 standards.
 
-```bash
-make
+Author
+
+ydimitra
+42 Codam can you help me fix the mistakes?
 
